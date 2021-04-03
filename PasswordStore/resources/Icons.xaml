@@ -10,4 +10,7 @@
     <BitmapImage x:Key="plus_icon" UriSource="\images\plus.png"/>
     <BitmapImage x:Key="door_icon" UriSource="\images\door.png"/>
     <BitmapImage x:Key="new_password_icon" UriSource="\images\key-or-password-plus-interface-button.png"/>
+
+    <BitmapImage x:Key="key_icon" UriSource="\images\keys.png"/>
+    <BitmapImage x:Key="key32_icon" UriSource="\images\keys32.png"/>
 </ResourceDictionary>
