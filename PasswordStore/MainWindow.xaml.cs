@@ -151,5 +151,15 @@ namespace PasswordStore
             PasswordGeneratorWindow window = new PasswordGeneratorWindow();
             window.ShowDialog();
         }
+
+        private void Change_Password(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow(MasterPassword);
+            if(changePasswordWindow.ShowDialog() == true)
+            {
+                MasterPassword = changePasswordWindow.NewPassword;
+                storeData();
+            }
+        }
     }
 }

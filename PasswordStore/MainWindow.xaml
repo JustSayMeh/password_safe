@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordStore"
         mc:Ignorable="d"
-        Title="Main" Height="450" Width="800">
+        Title="{StaticResource title_string}" Height="450" Width="800">
     <StackPanel>
         <Menu>
             <MenuItem Header="File">
@@ -31,7 +31,7 @@
                         <Image Source="{StaticResource plus_icon}"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{StaticResource change_master_password_string}">
+                <MenuItem Header="{StaticResource change_master_password_string}" Click="Change_Password">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource shuffle_icon}"/>
                     </MenuItem.Icon>
@@ -51,7 +51,7 @@
                 </Button.ToolTip>
                 <Image Source="{StaticResource broom_icon}" />
             </Button>
-            <Button Click="Button_Click_Exit_To_Start">
+            <Button Click="Change_Password">
                 <Button.ToolTip>
                     <ToolTip Content="{StaticResource change_master_password_string}"/>
                 </Button.ToolTip>
