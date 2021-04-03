@@ -78,5 +78,11 @@ namespace PasswordStore
             serviceLoginPassword = new ServiceLoginPassword(ServiceName.Text, Login.Text, password1);
             this.DialogResult = true;
         }
+
+        private void Generate_New_Password(object sender, RoutedEventArgs e)
+        {
+            PasswordGeneratorWindow window = new PasswordGeneratorWindow();
+            window.ShowDialog();
+        }
     }
 }

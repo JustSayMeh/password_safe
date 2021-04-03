@@ -23,8 +23,15 @@
             <CheckBox  Name="checkBox2" Content="{StaticResource show_password_string}" Checked="checkBox_Checked2" Unchecked="checkBox_Unchecked2" Margin="20,0,0,0"></CheckBox>
         </StackPanel>
         <WrapPanel HorizontalAlignment="Right">
+            <Button Margin="0,5,10,5" BorderThickness="0" Background="White" Height="24" Cursor="Hand" Click="Generate_New_Password">
+                <Button.ToolTip>
+                    <ToolTip Content="{StaticResource generate_password_string}"/>
+                </Button.ToolTip>
+                <Image Source="{StaticResource new_password_icon}" />
+            </Button>
             <Button  Click="enter_Changes" MinWidth="60" Margin="0,5,10,5" Padding="5" Content="{StaticResource ok_string}"/>
             <Button IsCancel="True" MinWidth="60" Margin="0,5,10,5" Padding="5" Content="{StaticResource cancel_string}"/>
+
         </WrapPanel>
     </StackPanel>
 </Window>
