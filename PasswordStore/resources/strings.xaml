@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PasswordStore.resources"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="different_passwords_string">Пароли не совпадают!</system:String>
+    <system:String x:Key="confirm_password_string">Подтвердите пароль</system:String>
+    <system:String x:Key="wrong_password_string">Неверный пароль!</system:String>
+    <system:String x:Key="show_password_string">Показать пароль</system:String>
+    <system:String x:Key="generate_password_string">Сгенерировать пароль</system:String>
+    <system:String x:Key="start_window_string">Начальная страница</system:String>
+    <system:String x:Key="exit_string">Выйти</system:String>
+    <system:String x:Key="add_string">Добавить</system:String>
+    <system:String x:Key="clear_buffer_string">Очистить буфер</system:String>
+    <system:String x:Key="change_master_password_string">Изменить Мастре-пароль</system:String>
+    <system:String x:Key="exit_to_start_screen">Выйти на начальный экран</system:String>
+
+    <system:String x:Key="delete_string">Удалить</system:String>
+    <system:String x:Key="edit_string">Изменить</system:String>
+    <system:String x:Key="delete_row_string">Удалить запись ?</system:String>
+    <system:String x:Key="enter_password_string">Введите пароль</system:String>
+    <system:String x:Key="cancel_string">Отмена</system:String>
+    <system:String x:Key="ok_string">Ок</system:String>
+    <system:String x:Key="password_string">Пароль</system:String>
+    <system:String x:Key="login_string">Логин</system:String>
+    <system:String x:Key="service_string">Сервис</system:String>
+
+    <system:String x:Key="open_store_string">Открыть хранилище</system:String>
+    <system:String x:Key="create_empty_store_string">Создать пустое хранилище</system:String>
+    <system:String x:Key="copy_string">Копировать</system:String>
+</ResourceDictionary>

@@ -27,6 +27,8 @@ namespace PasswordStore
         public string ServiceName { get; set; }
         public string Login { get; set; }
         public NetworkCredential Password { get; set; }
+
+  
         public ServiceLoginPassword(string ServiceName, string Login, string Password)
         {
             this.ServiceName = ServiceName;
@@ -36,6 +38,10 @@ namespace PasswordStore
     }
     public partial class MainWindow : Window
     {
+        private string delete_row_string = (string)Application.Current.FindResource("delete_row_string");
+        private string delete_string = (string)Application.Current.FindResource("delete_string");
+        
+
         private NetworkCredential MasterPassword;
         List<ServiceLoginPassword> items = new List<ServiceLoginPassword>();
         string store_path;
@@ -74,7 +80,7 @@ namespace PasswordStore
         private void Button_Click_Remove(object sender, RoutedEventArgs e)
         {
             ServiceLoginPassword dataRowView = (ServiceLoginPassword)((Button)e.Source).DataContext;
-            MessageBoxResult result = MessageBox.Show("Удалить запись ?", "Удалить", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show(delete_row_string, delete_string, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 items.Remove(dataRowView);

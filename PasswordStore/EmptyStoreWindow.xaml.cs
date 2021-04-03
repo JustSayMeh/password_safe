@@ -22,6 +22,8 @@ namespace PasswordStore
     /// </summary>
     public partial class EmptyStoreWindow : Window
     {
+        private string different_passwords_string = (string)Application.Current.FindResource("different_passwords_string");
+       
 
         public NetworkCredential Password { get; private set; }
         public EmptyStoreWindow()
@@ -40,7 +42,7 @@ namespace PasswordStore
             }
             else
             {
-                MessageBox.Show("Пароли не совпадают!");
+                MessageBox.Show(different_passwords_string);
             }
              
         }

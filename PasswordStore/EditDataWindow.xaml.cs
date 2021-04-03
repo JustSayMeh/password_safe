@@ -20,6 +20,7 @@ namespace PasswordStore
     public partial class EditDataWindow : Window
     {
         public ServiceLoginPassword serviceLoginPassword;
+        string different_passwords = (string) Application.Current.FindResource("different_passwords_string");
         public EditDataWindow(ServiceLoginPassword serviceLoginPassword)
         {
             InitializeComponent();
@@ -71,7 +72,7 @@ namespace PasswordStore
             string password2 = (checkBox2.IsChecked == true) ? PasswordV2.Text : PasswordM2.Password;
             if (!password1.Equals(password2))
             {
-                MessageBox.Show("Пароли не совпадают!", "Пароли не совпадают!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(different_passwords, different_passwords, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
                 

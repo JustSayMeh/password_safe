@@ -71,7 +71,8 @@ namespace PasswordStore
             }
             catch (CryptographicException exp)
             {
-                MessageBox.Show("Неверный пароль!", "Неверный пароль!", MessageBoxButton.OK, MessageBoxImage.Error);
+                string wront_password = (string)Application.Current.FindResource("wrong_password_string");
+                MessageBox.Show(wront_password, wront_password, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

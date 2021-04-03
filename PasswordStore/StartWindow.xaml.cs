@@ -28,12 +28,12 @@ namespace PasswordStore
             if (File.Exists(store_path))
             {
                 ActionButton.Click += Call_Password_Window;
-                ActionButton.Content = "Открыть хранилище";
+                ActionButton.Content = Application.Current.FindResource("open_store_string");
             }
             else
             {
                 ActionButton.Click += Call_Empty_Store_Window;
-                ActionButton.Content = "Создать пустое хранилище";
+                ActionButton.Content = Application.Current.FindResource("create_empty_store_string");
             }
 
         }

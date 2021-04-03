@@ -9,48 +9,42 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="File">
-                <MenuItem Header="Сгенерировать пароль"></MenuItem>
-                <MenuItem Header="Начальная страница"></MenuItem>
-                <MenuItem Header="Выйти"></MenuItem>
+                <MenuItem Header="{StaticResource generate_password_string}"></MenuItem>
+                <MenuItem Header="{StaticResource exit_to_start_screen}"></MenuItem>
+                <MenuItem Header="{StaticResource exit_string}"></MenuItem>
             </MenuItem>
             <MenuItem Header="Edit"></MenuItem>
         </Menu>
         <ToolBar Height="25" VerticalAlignment="Top">
             <ToggleButton Click="Button_Click_Add">
                 <ToggleButton.ToolTip>
-                    <ToolTip>
-                        Добавить
-                    </ToolTip>
+                    <ToolTip Content="{StaticResource add_string}"/>
                 </ToggleButton.ToolTip>
                 <Image Source="{StaticResource plus_icon}" />
             </ToggleButton>
             <ToggleButton Click="Button_Click_Clear">
                 <ToggleButton.ToolTip>
-                    <ToolTip>
-                        Очистить буфер
-                    </ToolTip>
+                    <ToolTip Content="{StaticResource clear_buffer_string}"/>
                 </ToggleButton.ToolTip>
                 <Image Source="{StaticResource broom_icon}" />
             </ToggleButton>
             <ToggleButton Click="Button_Click_Exit_To_Start">
                 <ToggleButton.ToolTip>
-                    <ToolTip>
-                        Изменить Мастер-Пароль
-                    </ToolTip>
+                    <ToolTip Content="{StaticResource change_master_password_string}"/>
                 </ToggleButton.ToolTip>
                 <Image Source="{StaticResource shuffle_icon}" />
             </ToggleButton>
             <Separator/>
             <ToggleButton Click="Button_Click_Exit_To_Start">
                 <ToggleButton.ToolTip>
-                    <ToolTip>
-                        Выйти на начальный экран
-                    </ToolTip>
+                    <ToolTip Content="{StaticResource exit_to_start_screen}"/>
                 </ToggleButton.ToolTip>
                 <Image Source="{StaticResource exit_icon}" />
             </ToggleButton>
         </ToolBar>
-        <DataGrid HeadersVisibility="Column"  CanUserSortColumns="False" CanUserResizeRows="False"  CanUserResizeColumns="False" Name="ItemList" AutoGenerateColumns="False" ColumnWidth="*" CanUserReorderColumns="False">
+        <DataGrid HeadersVisibility="Column"  CanUserSortColumns="False" CanUserResizeRows="False"  
+                  CanUserResizeColumns="False" Name="ItemList" AutoGenerateColumns="False" 
+                  ColumnWidth="*" CanUserReorderColumns="False">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -58,28 +52,27 @@
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Сервис">
+                <DataGridTemplateColumn Header="{StaticResource service_string}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox BorderThickness="0" IsReadOnly="True" Text="{Binding Path=ServiceName}"  MouseDoubleClick="TextBox_CopyToClipboard"/>
+                            <TextBox BorderThickness="0" IsReadOnly="True" 
+                                     Text="{Binding Path=ServiceName}"  MouseDoubleClick="TextBox_CopyToClipboard"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Логин">
+                <DataGridTemplateColumn Header="{StaticResource login_string}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox BorderThickness="0" IsReadOnly="True" Text="{Binding Path=Login}"  MouseDoubleClick="TextBox_CopyToClipboard"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Пароль">
+                <DataGridTemplateColumn Header="{StaticResource password_string}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Copy">
                                 <Button.ToolTip>
-                                    <ToolTip>
-                                        Копировать
-                                    </ToolTip>
+                                    <ToolTip Content="{StaticResource copy_string}"/>
                                 </Button.ToolTip>
                                 <Image Source="{StaticResource copy_icon}" />
                             </Button>
@@ -91,10 +84,8 @@
                         <DataTemplate>
                             <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Remove">
                                 <Button.ToolTip>
-                                        <ToolTip>
-                                            Удалить
-                                        </ToolTip>
-                                    </Button.ToolTip>
+                                    <ToolTip Content="{StaticResource delete_string}"/>
+                                </Button.ToolTip>
                                 <Image Source="{StaticResource trash_icon}" />
                                 </Button>
                         </DataTemplate>
@@ -105,9 +96,7 @@
                         <DataTemplate>
                             <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Edit">
                                 <Button.ToolTip>
-                                    <ToolTip>
-                                        Редактировать
-                                    </ToolTip>
+                                    <ToolTip Content="{StaticResource edit_string}"/>
                                 </Button.ToolTip>
                                 <Image Source="{StaticResource edit_icon}" />
                             </Button>
