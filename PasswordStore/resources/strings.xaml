@@ -27,4 +27,15 @@
     <system:String x:Key="open_store_string">Открыть хранилище</system:String>
     <system:String x:Key="create_empty_store_string">Создать пустое хранилище</system:String>
     <system:String x:Key="copy_string">Копировать</system:String>
+
+
+    <system:String x:Key="generate_string">Сгенерировать</system:String>
+
+    <system:String x:Key="latin_string">Латиница</system:String>
+    <system:String x:Key="numeric_string">Цифры</system:String>
+
+    <system:String x:Key="kyrilic_string">Кириллица</system:String>
+    <system:String x:Key="specials_string">Специальные символы</system:String>
+    <system:String x:Key="upper_string">Верхний регистр</system:String>
+    <system:String x:Key="password_length_string">Длина пароля:</system:String>
 </ResourceDictionary>

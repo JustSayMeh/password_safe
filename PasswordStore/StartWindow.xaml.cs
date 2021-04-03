@@ -74,7 +74,8 @@ namespace PasswordStore
 
         private void Call_Password_Generator_Window(object sender, RoutedEventArgs e)
         {
-
+            PasswordGeneratorWindow window = new PasswordGeneratorWindow();
+            window.ShowDialog();
         }
     }
 }

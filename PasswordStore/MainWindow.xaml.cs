@@ -145,5 +145,11 @@ namespace PasswordStore
             Clipboard.SetText("");
             base.OnClosing(e);
         }
+
+        private void Generate_New_Password(object sender, RoutedEventArgs e)
+        {
+            PasswordGeneratorWindow window = new PasswordGeneratorWindow();
+            window.ShowDialog();
+        }
     }
 }
