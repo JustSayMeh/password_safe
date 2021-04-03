@@ -1,0 +1,30 @@
+﻿<Window x:Class="PasswordStore.EditDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordStore"
+        mc:Ignorable="d"
+        Title="Редактирование" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <TextBlock Margin="10,5,50,0">Сервис :</TextBlock>
+        <TextBox Name="ServiceName" MinWidth="250" Margin="10,5,50,0" Padding="5"></TextBox>
+        <TextBlock Margin="10,5,50,0">Логин :</TextBlock>
+        <TextBox Name="Login" MinWidth="250" Margin="10,5,50,0" Padding="5"></TextBox>
+        <TextBlock Margin="10,5,50,0">Пароль :</TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="10,5,50,0">
+            <PasswordBox Name="PasswordM1" MinWidth="250" Padding="5"></PasswordBox>
+            <TextBox Visibility="Collapsed" Name="PasswordV1" MinWidth="250" Padding="5"></TextBox>
+            <CheckBox  Name="checkBox1" Content="Показать пароль" Checked="checkBox_Checked1" Unchecked="checkBox_Unchecked1" Margin="20,0,0,0"></CheckBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,5,50,0">
+            <PasswordBox Name="PasswordM2" MinWidth="250" Padding="5"></PasswordBox>
+            <TextBox Visibility="Collapsed" Name="PasswordV2" MinWidth="250" Padding="5"></TextBox>
+            <CheckBox  Name="checkBox2" Content="Показать пароль" Checked="checkBox_Checked2" Unchecked="checkBox_Unchecked2" Margin="20,0,0,0"></CheckBox>
+        </StackPanel>
+        <WrapPanel HorizontalAlignment="Right">
+            <Button  Click="enter_Changes" MinWidth="60" Margin="0,5,10,5" Padding="5">OK</Button>
+            <Button IsCancel="True" MinWidth="60" Margin="0,5,10,5" Padding="5">Отмена</Button>
+        </WrapPanel>
+    </StackPanel>
+</Window>

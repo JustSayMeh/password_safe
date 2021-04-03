@@ -1,0 +1,120 @@
+﻿<Window x:Class="PasswordStore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordStore"
+        mc:Ignorable="d"
+        Title="Main" Height="450" Width="800">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem Header="Сгенерировать пароль"></MenuItem>
+                <MenuItem Header="Начальная страница"></MenuItem>
+                <MenuItem Header="Выйти"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit"></MenuItem>
+        </Menu>
+        <ToolBar Height="25" VerticalAlignment="Top">
+            <ToggleButton Click="Button_Click_Add">
+                <ToggleButton.ToolTip>
+                    <ToolTip>
+                        Добавить
+                    </ToolTip>
+                </ToggleButton.ToolTip>
+                <Image Source="{StaticResource plus_icon}" />
+            </ToggleButton>
+            <ToggleButton Click="Button_Click_Clear">
+                <ToggleButton.ToolTip>
+                    <ToolTip>
+                        Очистить буфер
+                    </ToolTip>
+                </ToggleButton.ToolTip>
+                <Image Source="{StaticResource broom_icon}" />
+            </ToggleButton>
+            <ToggleButton Click="Button_Click_Exit_To_Start">
+                <ToggleButton.ToolTip>
+                    <ToolTip>
+                        Изменить Мастер-Пароль
+                    </ToolTip>
+                </ToggleButton.ToolTip>
+                <Image Source="{StaticResource shuffle_icon}" />
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Click="Button_Click_Exit_To_Start">
+                <ToggleButton.ToolTip>
+                    <ToolTip>
+                        Выйти на начальный экран
+                    </ToolTip>
+                </ToggleButton.ToolTip>
+                <Image Source="{StaticResource exit_icon}" />
+            </ToggleButton>
+        </ToolBar>
+        <DataGrid HeadersVisibility="Column"  CanUserSortColumns="False" CanUserResizeRows="False"  CanUserResizeColumns="False" Name="ItemList" AutoGenerateColumns="False" ColumnWidth="*" CanUserReorderColumns="False">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Сервис">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox BorderThickness="0" IsReadOnly="True" Text="{Binding Path=ServiceName}"  MouseDoubleClick="TextBox_CopyToClipboard"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Логин">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox BorderThickness="0" IsReadOnly="True" Text="{Binding Path=Login}"  MouseDoubleClick="TextBox_CopyToClipboard"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Пароль">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Copy">
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        Копировать
+                                    </ToolTip>
+                                </Button.ToolTip>
+                                <Image Source="{StaticResource copy_icon}" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Remove">
+                                <Button.ToolTip>
+                                        <ToolTip>
+                                            Удалить
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                <Image Source="{StaticResource trash_icon}" />
+                                </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Edit">
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        Редактировать
+                                    </ToolTip>
+                                </Button.ToolTip>
+                                <Image Source="{StaticResource edit_icon}" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Window>
