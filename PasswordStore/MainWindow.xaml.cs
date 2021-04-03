@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -129,9 +130,20 @@ namespace PasswordStore
             this.Close();
         }
 
+        private void Button_Click_Exit(object sender, RoutedEventArgs e)
+        { 
+            System.Windows.Application.Current.Shutdown();
+        }
+
         private void Button_Click_Clear(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText("");
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Clipboard.SetText("");
+            base.OnClosing(e);
         }
     }
 }

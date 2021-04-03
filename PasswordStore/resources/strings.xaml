@@ -11,7 +11,7 @@
     <system:String x:Key="exit_string">Выйти</system:String>
     <system:String x:Key="add_string">Добавить</system:String>
     <system:String x:Key="clear_buffer_string">Очистить буфер</system:String>
-    <system:String x:Key="change_master_password_string">Изменить Мастре-пароль</system:String>
+    <system:String x:Key="change_master_password_string">Изменить Мастер-пароль</system:String>
     <system:String x:Key="exit_to_start_screen">Выйти на начальный экран</system:String>
 
     <system:String x:Key="delete_string">Удалить</system:String>

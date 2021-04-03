@@ -8,4 +8,6 @@
     <BitmapImage x:Key="shuffle_icon" UriSource="\images\shuffle.png"/>
     <BitmapImage x:Key="broom_icon" UriSource="\images\broom.png"/>
     <BitmapImage x:Key="plus_icon" UriSource="\images\plus.png"/>
+    <BitmapImage x:Key="door_icon" UriSource="\images\door.png"/>
+    <BitmapImage x:Key="new_password_icon" UriSource="\images\key-or-password-plus-interface-button.png"/>
 </ResourceDictionary>

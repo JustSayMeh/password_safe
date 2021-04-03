@@ -21,6 +21,8 @@ namespace PasswordStore
     /// </summary>
     public partial class StartWindow : Window
     {
+        private string open_store_string = (string)Application.Current.FindResource("open_store_string");
+        private string create_empty_store_string = (string)Application.Current.FindResource("create_empty_store_string");
         private string store_path = ".store";
         public StartWindow()
         {
@@ -28,12 +30,12 @@ namespace PasswordStore
             if (File.Exists(store_path))
             {
                 ActionButton.Click += Call_Password_Window;
-                ActionButton.Content = Application.Current.FindResource("open_store_string");
+                ActionButton.Content = open_store_string;
             }
             else
             {
                 ActionButton.Click += Call_Empty_Store_Window;
-                ActionButton.Content = Application.Current.FindResource("create_empty_store_string");
+                ActionButton.Content = create_empty_store_string;
             }
 
         }

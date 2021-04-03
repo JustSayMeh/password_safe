@@ -9,11 +9,34 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="File">
-                <MenuItem Header="{StaticResource generate_password_string}"></MenuItem>
-                <MenuItem Header="{StaticResource exit_to_start_screen}"></MenuItem>
-                <MenuItem Header="{StaticResource exit_string}"></MenuItem>
+                <MenuItem Header="{StaticResource generate_password_string}"  >
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource new_password_icon}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{StaticResource exit_to_start_screen}" Click="Button_Click_Exit_To_Start" >
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource door_icon}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{StaticResource exit_string}" Click="Button_Click_Exit">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource exit_icon}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="Edit"></MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="{StaticResource add_string}">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource plus_icon}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{StaticResource change_master_password_string}">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource shuffle_icon}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
         </Menu>
         <ToolBar Height="25" VerticalAlignment="Top">
             <ToggleButton Click="Button_Click_Add">
@@ -39,7 +62,7 @@
                 <ToggleButton.ToolTip>
                     <ToolTip Content="{StaticResource exit_to_start_screen}"/>
                 </ToggleButton.ToolTip>
-                <Image Source="{StaticResource exit_icon}" />
+                <Image Source="{StaticResource door_icon}" />
             </ToggleButton>
         </ToolBar>
         <DataGrid HeadersVisibility="Column"  CanUserSortColumns="False" CanUserResizeRows="False"  

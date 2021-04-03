@@ -35,7 +35,6 @@ namespace PasswordStore
         public EditDataWindow()
         {
             InitializeComponent();
-            
         }
 
         private void checkBox_Checked1(object sender, RoutedEventArgs e)
