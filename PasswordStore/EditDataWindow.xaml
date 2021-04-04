@@ -13,14 +13,11 @@
         <TextBox Name="Login" MinWidth="250" Margin="10,5,50,0" Padding="5"></TextBox>
         <TextBlock Margin="10,5,50,0" Text="{StaticResource password_string}"/>
         <StackPanel Orientation="Horizontal" Margin="10,5,50,0">
-            <PasswordBox Name="PasswordM1" MinWidth="250" Padding="5"></PasswordBox>
-            <TextBox Visibility="Collapsed" Name="PasswordV1" MinWidth="250" Padding="5"></TextBox>
+            <local:SwitchablePasswordBox x:Name="PasswordM1"></local:SwitchablePasswordBox>
             <CheckBox  Name="checkBox1" Content="{StaticResource show_password_string}" Checked="checkBox_Checked1" Unchecked="checkBox_Unchecked1" Margin="20,0,0,0"></CheckBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,5,50,0">
-            <PasswordBox Name="PasswordM2" MinWidth="250" Padding="5"></PasswordBox>
-            <TextBox Visibility="Collapsed" Name="PasswordV2" MinWidth="250" Padding="5"></TextBox>
-            <CheckBox  Name="checkBox2" Content="{StaticResource show_password_string}" Checked="checkBox_Checked2" Unchecked="checkBox_Unchecked2" Margin="20,0,0,0"></CheckBox>
+            <local:SwitchablePasswordBox x:Name="PasswordM2"></local:SwitchablePasswordBox>
         </StackPanel>
         <WrapPanel HorizontalAlignment="Right">
             <Button Margin="0,5,10,5" BorderThickness="0" Background="White" Height="24" Cursor="Hand" Click="Generate_New_Password">

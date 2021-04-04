@@ -24,10 +24,8 @@ namespace PasswordStore
         public EditDataWindow(ServiceLoginPassword serviceLoginPassword)
         {
             InitializeComponent();
-            PasswordM1.Password = serviceLoginPassword.Password.Password;
-            PasswordM2.Password = serviceLoginPassword.Password.Password;
-            PasswordV1.Text = serviceLoginPassword.Password.Password;
-            PasswordV2.Text = serviceLoginPassword.Password.Password;
+            PasswordM1.Password = serviceLoginPassword.Password;
+            PasswordM2.Password = serviceLoginPassword.Password;
             ServiceName.Text = serviceLoginPassword.ServiceName;
             Login.Text = serviceLoginPassword.Login;
         }
@@ -39,36 +37,20 @@ namespace PasswordStore
 
         private void checkBox_Checked1(object sender, RoutedEventArgs e)
         {
-            PasswordM1.Visibility = System.Windows.Visibility.Collapsed;
-            PasswordV1.Visibility = System.Windows.Visibility.Visible;
-            PasswordV1.Text = PasswordM1.Password;
+            PasswordM1.ShowPassword();
+            PasswordM2.ShowPassword();
         }
 
         private void checkBox_Unchecked1(object sender, RoutedEventArgs e)
         {
-            PasswordV1.Visibility = System.Windows.Visibility.Collapsed;
-            PasswordM1.Visibility = System.Windows.Visibility.Visible;
-            PasswordM1.Password = PasswordV1.Text;
-        }
-
-        private void checkBox_Checked2(object sender, RoutedEventArgs e)
-        {
-            PasswordM2.Visibility = System.Windows.Visibility.Collapsed;
-            PasswordV2.Visibility = System.Windows.Visibility.Visible;
-            PasswordV2.Text = PasswordM2.Password;
-        }
-
-        private void checkBox_Unchecked2(object sender, RoutedEventArgs e)
-        {
-            PasswordV2.Visibility = System.Windows.Visibility.Collapsed;
-            PasswordM2.Visibility = System.Windows.Visibility.Visible;
-            PasswordM2.Password = PasswordV2.Text;
+            PasswordM1.HiddenPassword();
+            PasswordM2.HiddenPassword();
         }
 
         private void enter_Changes(object sender, RoutedEventArgs e)
         {
-            string password1 = (checkBox1.IsChecked == true) ? PasswordV1.Text : PasswordM1.Password;
-            string password2 = (checkBox2.IsChecked == true) ? PasswordV2.Text : PasswordM2.Password;
+            string password1 = PasswordM1.Password.Password;
+            string password2 = PasswordM2.Password.Password;
             if (!password1.Equals(password2))
             {
                 MessageBox.Show(different_passwords, different_passwords, MessageBoxButton.OK, MessageBoxImage.Error);
