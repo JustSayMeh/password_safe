@@ -41,7 +41,8 @@ namespace PasswordStore
     {
         private string delete_row_string = (string)Application.Current.FindResource("delete_row_string");
         private string delete_string = (string)Application.Current.FindResource("delete_string");
-        
+        private string search_string = (string)Application.Current.FindResource("search_string");
+
 
         private NetworkCredential MasterPassword;
         List<ServiceLoginPassword> items = new List<ServiceLoginPassword>();
@@ -159,6 +160,35 @@ namespace PasswordStore
             {
                 MasterPassword = changePasswordWindow.NewPassword;
                 storeData();
+            }
+        }
+
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            string mask = SearchBox.Text;
+            if (mask.Length == 0)
+                ItemList.ItemsSource = items;
+            ItemList.ItemsSource = items.Where(item => item.Login.StartsWith(mask) || item.ServiceName.StartsWith(mask));
+        }
+
+
+
+        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchBox.Text.Equals(search_string))
+            {
+                SearchBox.Text = "";
+                SearchBox.Foreground = Brushes.Black;
+            }
+           
+        }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchBox.Text.Length == 0)
+            {
+                SearchBox.Foreground = Brushes.Gray;
+                SearchBox.Text = search_string;
             }
         }
     }

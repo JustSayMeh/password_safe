@@ -52,6 +52,7 @@ namespace PasswordStore
         {
             InitializeComponent();
             this.store_path = store_path;
+            Password1.Focus();
         }
 
         private void Enter_Password(object sender, RoutedEventArgs e)

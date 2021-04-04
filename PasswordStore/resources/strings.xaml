@@ -42,4 +42,5 @@
     <system:String x:Key="old_password_string">Старый Мастер-Пароль</system:String>
     <system:String x:Key="new_password_string">Новый Мастер-Пароль</system:String>
     <system:String x:Key="file_isnot_store_string">Файл не является хранлищем!</system:String>
+    <system:String x:Key="search_string">Поиск...</system:String>
 </ResourceDictionary>

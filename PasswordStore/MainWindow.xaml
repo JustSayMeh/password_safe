@@ -27,7 +27,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="{StaticResource add_string}">
+                <MenuItem Header="{StaticResource add_string}" Click="Button_Click_Add">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource plus_icon}"/>
                     </MenuItem.Icon>
@@ -65,10 +65,15 @@
                 </Button.ToolTip>
                 <Image Source="{StaticResource door_icon}" />
             </Button>
+            <TextBox GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" Foreground="Gray" FontSize="10" Name="SearchBox" 
+                     KeyUp="TextBox_KeyUp" MinWidth="200" 
+                     Text="{StaticResource search_string}">
+            </TextBox>
         </ToolBar>
         <DataGrid HeadersVisibility="Column"  CanUserSortColumns="False" CanUserResizeRows="False"  
                   CanUserResizeColumns="False" Name="ItemList" AutoGenerateColumns="False" 
                   ColumnWidth="*" CanUserReorderColumns="False">
+
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <Setter Property="BorderThickness" Value="0"/>
