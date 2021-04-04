@@ -69,6 +69,10 @@ namespace PasswordStore
             using (BinaryReader streamReader = new BinaryReader(File.Open(filepath, FileMode.OpenOrCreate)))
             {
                 byte version = streamReader.ReadByte();
+                if (streamReader.BaseStream.Position == streamReader.BaseStream.Length)
+                {
+                    throw new FileFormatException("Invalid store file format!");
+                }
                 while (streamReader.BaseStream.Position != streamReader.BaseStream.Length)
                 {
                     byte code = streamReader.ReadByte();
@@ -90,6 +94,8 @@ namespace PasswordStore
                             size = streamReader.ReadInt32();
                             file.Salt = streamReader.ReadBytes(size);
                             break;
+                        default:
+                            throw new FileFormatException("Invalid store file format!");
                     }
                 }
             }

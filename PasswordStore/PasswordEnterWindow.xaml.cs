@@ -58,10 +58,11 @@ namespace PasswordStore
         {
             string password = Password1.Password;
             Password = new NetworkCredential("", Password1.Password);
-            CryptoFile cryptoFile = CryptoProtocol.Read(store_path);
-            Crypter crypter = new Crypter(password, cryptoFile.Salt, cryptoFile.IV);
+            
             try
             {
+                CryptoFile cryptoFile = CryptoProtocol.Read(store_path);
+                Crypter crypter = new Crypter(password, cryptoFile.Salt, cryptoFile.IV);
                 string decrypt_data = crypter.Decrypt(cryptoFile.Cipher_text);
                 byte[] hash = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(decrypt_data), crypter.Salt);
                 if (!StructuralComparisons.StructuralEqualityComparer.Equals(hash, cryptoFile.Hash))
@@ -73,6 +74,11 @@ namespace PasswordStore
             {
                 string wront_password = (string)Application.Current.FindResource("wrong_password_string");
                 MessageBox.Show(wront_password, wront_password, MessageBoxButton.OK, MessageBoxImage.Error);
+            } catch (FileFormatException exp)
+            {
+                string file_isnot_store_string = (string)Application.Current.FindResource("file_isnot_store_string");
+                MessageBox.Show(file_isnot_store_string, file_isnot_store_string, MessageBoxButton.OK, MessageBoxImage.Error);
+                this.DialogResult = true;
             }
         }
     }
