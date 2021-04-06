@@ -20,6 +20,9 @@ namespace PasswordStore
     /// </summary>
     public partial class PasswordGeneratorWindow : Window
     {
+        private string generate_string = (string)Application.Current.FindResource("generate_string");
+        private string copy_string = (string)Application.Current.FindResource("copy_string_2");
+        private NetworkCredential password_ = null;
         public PasswordGeneratorWindow()
         {
             InitializeComponent();
@@ -27,6 +30,11 @@ namespace PasswordStore
 
         private void Generate_Password(object sender, RoutedEventArgs e)
         {
+            if (password_ != null)
+            {
+                Clipboard.SetText(password_.Password);
+            }
+
             PasswordGenerator passwordGenerator = new PasswordGenerator();
             if (Uppers.IsChecked == true)
                 passwordGenerator.Enable_latin_upper();
@@ -47,7 +55,18 @@ namespace PasswordStore
        
             NetworkCredential password = passwordGenerator.Generate((int)PasswordLengthSlider.Value);
             Clipboard.SetText(password.Password);
+            password_ = password;
+            GButton.Content = copy_string;
             return;
+        }
+
+        private void GButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (password_ != null)
+            {
+                password_ = null;
+                GButton.Content = generate_string;
+            }
         }
     }
 }

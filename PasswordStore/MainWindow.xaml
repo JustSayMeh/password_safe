@@ -31,7 +31,7 @@
                     <MenuItem.Icon>
                         <Image Source="{StaticResource plus_icon}"/>
                     </MenuItem.Icon>
-                </MenuItem>
+                </MenuItem> 
                 <MenuItem Header="{StaticResource change_master_password_string}" Click="Change_Password">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource shuffle_icon}"/>
