@@ -44,4 +44,6 @@
     <system:String x:Key="file_isnot_store_string">Файл не является хранлищем!</system:String>
     <system:String x:Key="search_string">Поиск...</system:String>
     <system:String x:Key="copy_string_2">Скопировано</system:String>
+    <system:String x:Key="empty_password_string">Поле пароля не должно быть пустым!</system:String>
+    <system:String x:Key="space_password_string">Поле пароля не должно содержать пробелы!</system:String>
 </ResourceDictionary>

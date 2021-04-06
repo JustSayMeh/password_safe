@@ -41,7 +41,7 @@ namespace PasswordStore
                 {
                     while (!streamReader.EndOfStream)
                     {
-                        string[] arr = streamReader.ReadLine().Split(':');
+                        string[] arr = streamReader.ReadLine().Split(new string[] { " : "}, StringSplitOptions.None);
                         Items.Add(new ServiceLoginPassword(arr[0].Trim(), arr[1].Trim(), arr[2].Trim()));
                     }
                 }

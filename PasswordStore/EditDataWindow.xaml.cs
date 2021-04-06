@@ -20,7 +20,9 @@ namespace PasswordStore
     public partial class EditDataWindow : Window
     {
         public ServiceLoginPassword serviceLoginPassword;
-        string different_passwords = (string) Application.Current.FindResource("different_passwords_string");
+        private string different_passwords = (string) Application.Current.FindResource("different_passwords_string");
+        private string empty_password_string = (string)Application.Current.FindResource("empty_password_string");
+        private string space_password_string = (string)Application.Current.FindResource("space_password_string");
         public EditDataWindow(ServiceLoginPassword serviceLoginPassword)
         {
             InitializeComponent();
@@ -56,7 +58,17 @@ namespace PasswordStore
                 MessageBox.Show(different_passwords, different_passwords, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-                
+            if (password1.Length == 0 || password2.Length == 0)
+            {
+                MessageBox.Show(empty_password_string, empty_password_string, MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
+            if (password1.Contains(" ") || password2.Contains(" ") )
+            {
+                MessageBox.Show(space_password_string, space_password_string, MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             serviceLoginPassword = new ServiceLoginPassword(ServiceName.Text, Login.Text, password1);
             this.DialogResult = true;
         }
