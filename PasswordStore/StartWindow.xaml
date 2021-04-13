@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordStore"
         mc:Ignorable="d"
-        Title="{StaticResource title_string}" Height="450" Width="400"
+        Title="{StaticResource title_string}" Height="250" Width="400"
         Icon="{StaticResource key32_icon}"
         ShowInTaskbar="True"
         ResizeMode="NoResize"
@@ -14,8 +14,12 @@
 
 
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="50, 0">
-            <Button Name="ActionButton" Margin="5" Padding="5" ></Button>
+        <Image Source="{StaticResource logo_icon}" Margin="0,0,0,30"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Name="ActionButton" Margin="5" Padding="5"/>
             <Button  Click="Call_Password_Generator_Window" Margin="5" Padding="5" Content="{StaticResource generate_password_string}"/>
+        </StackPanel>
+        
         </StackPanel>
 
 </Window>

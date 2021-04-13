@@ -38,7 +38,7 @@
     <system:String x:Key="specials_string">Специальные символы</system:String>
     <system:String x:Key="upper_string">Верхний регистр</system:String>
     <system:String x:Key="password_length_string">Длина пароля:</system:String>
-    <system:String x:Key="title_string">Password Safe</system:String>
+    <system:String x:Key="title_string">Password Vault</system:String>
     <system:String x:Key="old_password_string">Старый Мастер-Пароль</system:String>
     <system:String x:Key="new_password_string">Новый Мастер-Пароль</system:String>
     <system:String x:Key="file_isnot_store_string">Файл не является хранлищем!</system:String>
