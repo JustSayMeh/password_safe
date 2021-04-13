@@ -2,5 +2,5 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:PasswordStore.resources">
     <Color x:Key="window_background_color">#f5f5f5</Color>
-    <SolidColorBrush x:Key="window_backgroud_color" Color="{DynamicResource window_background_color}">
+    <SolidColorBrush x:Key="window_backgroud_color" Color="{DynamicResource window_background_color}"/>
 </ResourceDictionary>

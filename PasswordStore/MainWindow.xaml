@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PasswordStore"
         mc:Ignorable="d"
         Title="{StaticResource title_string}" Height="450" Width="800"
-        Icon="{StaticResource key32_icon}">
+        Icon="{StaticResource key32_icon}"
+        Background="{StaticResource window_backgroud_color}">
     <StackPanel>
         <Menu>
             <MenuItem Header="File">
@@ -99,7 +100,7 @@
                 <DataGridTemplateColumn Header="{StaticResource password_string}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Copy">
+                            <Button BorderThickness="0" Background="White" Height="25" Click="Button_Click_Copy">
                                 <Button.ToolTip>
                                     <ToolTip Content="{StaticResource copy_string}"/>
                                 </Button.ToolTip>
@@ -111,7 +112,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Remove">
+                            <Button BorderThickness="0" Background="White" Height="25" Click="Button_Click_Remove">
                                 <Button.ToolTip>
                                     <ToolTip Content="{StaticResource delete_string}"/>
                                 </Button.ToolTip>
@@ -123,7 +124,7 @@
                 <DataGridTemplateColumn >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button BorderThickness="0" Background="White" Height="20" Click="Button_Click_Edit">
+                            <Button BorderThickness="0" Background="White" Height="25" Click="Button_Click_Edit">
                                 <Button.ToolTip>
                                     <ToolTip Content="{StaticResource edit_string}"/>
                                 </Button.ToolTip>

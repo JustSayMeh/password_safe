@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordStore"
         mc:Ignorable="d"
-        Title="Редактирование" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+        Title="Редактирование" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
+        Background="{StaticResource window_backgroud_color}">
     <StackPanel>
         <TextBlock Margin="10,5,50,0" Text="{StaticResource service_string}"/>
         <TextBox Name="ServiceName" MinWidth="250" Margin="10,5,50,0" Padding="5"></TextBox>
@@ -20,7 +21,7 @@
             <local:SwitchablePasswordBox x:Name="PasswordM2"></local:SwitchablePasswordBox>
         </StackPanel>
         <WrapPanel HorizontalAlignment="Right">
-            <Button Margin="0,5,10,5" BorderThickness="0" Background="White" Height="24" Cursor="Hand" Click="Generate_New_Password">
+            <Button Margin="0,5,10,5" BorderThickness="0" Background="{StaticResource window_backgroud_color}" Height="24" Cursor="Hand" Click="Generate_New_Password">
                 <Button.ToolTip>
                     <ToolTip Content="{StaticResource generate_password_string}"/>
                 </Button.ToolTip>
