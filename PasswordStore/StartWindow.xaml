@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="{StaticResource title_string}" Height="450" Width="400"
         Icon="{StaticResource key32_icon}"
-        ShowInTaskbar="True">
+        ShowInTaskbar="True"
+        ResizeMode="NoResize"
+        Background="{StaticResource window_backgroud_color}">
 
 
 

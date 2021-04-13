@@ -4,10 +4,24 @@
 
     <LinearGradientBrush x:Key="GrayBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Color="DarkGray" Offset="0" />
-        <GradientStop Color="Azure" Offset="0.5" />
+        <GradientStop Color="#cbcbcb" Offset="0.5" />
         <GradientStop Color="DarkGray" Offset="1" />
     </LinearGradientBrush>
     <Style TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="{TemplateBinding Background}"  RadiusX="5" RadiusY="5" />
+                        <DockPanel>
+                            <ContentPresenter HorizontalAlignment="Center" Margin="5" Content="{TemplateBinding Content}" />
+                        </DockPanel>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
