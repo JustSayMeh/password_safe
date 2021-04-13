@@ -64,6 +64,11 @@ namespace PasswordStore
             EmptyStoreWindow emptyStoreWindow = new EmptyStoreWindow();
             if (emptyStoreWindow.ShowDialog() == true)
             {
+                Crypter crypter = new Crypter(emptyStoreWindow.Password.Password);
+                byte[] encrypted = crypter.Encrypt("");
+                byte[] salty = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(""), crypter.Salt);
+                CryptoFile cryptoFile = new CryptoFile(encrypted, salty, crypter.IV, crypter.Salt);
+                CryptoProtocol.Save(cryptoFile, store_path);
                 Window window = new MainWindow(emptyStoreWindow.Password, new List<ServiceLoginPassword>(), store_path);
                 window.Show();
                 this.Close();

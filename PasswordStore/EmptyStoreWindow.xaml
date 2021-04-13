@@ -8,9 +8,9 @@
         Title="Введите пароль" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <TextBlock HorizontalAlignment="Center" Text="{StaticResource enter_password_string}"/>
-        <PasswordBox Name="Password1" MinWidth="250" Margin="10,5,10,0"></PasswordBox>
+        <PasswordBox Name="Password1" MinWidth="250" Margin="10,5,10,0" Padding="5"></PasswordBox>
         <TextBlock HorizontalAlignment="Center" Text="{StaticResource confirm_password_string}"/>
-        <PasswordBox Name="Password2" MinWidth="250" Margin="10,5,10,0"></PasswordBox>
+        <PasswordBox Name="Password2" MinWidth="250" Margin="10,5,10,0" Padding="5"></PasswordBox>
         <WrapPanel HorizontalAlignment="Right">
             <Button  Click="Enter_Password" MinWidth="60" Margin="0,5,10,5" Padding="5" Content="{StaticResource ok_string}"/>
             <Button IsCancel="True" MinWidth="60" Margin="0,5,10,5" Padding="5" Content="{StaticResource cancel_string}"/>

@@ -5,24 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordStore"
         mc:Ignorable="d"
-        Title="{StaticResource title_string}" Height="450" Width="800"
+        Title="{StaticResource title_string}" Height="450" Width="400"
         Icon="{StaticResource key32_icon}"
         ShowInTaskbar="True">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <Button Name="ActionButton" Margin="5" Padding="5"></Button>
+
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="50, 0">
+            <Button Name="ActionButton" Margin="5" Padding="5" ></Button>
             <Button  Click="Call_Password_Generator_Window" Margin="5" Padding="5" Content="{StaticResource generate_password_string}"/>
         </StackPanel>
-    </Grid>
+
 </Window>
