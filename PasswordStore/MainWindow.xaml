@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="{StaticResource title_string}" Height="450" Width="800"
         Icon="{StaticResource key32_icon}"
+        
         Background="{StaticResource window_backgroud_color}">
     <StackPanel>
         <Menu>

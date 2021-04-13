@@ -17,7 +17,7 @@
         <Image Source="{StaticResource logo_icon}" Margin="0,0,0,30"/>
         <StackPanel Orientation="Horizontal">
             <Button Name="ActionButton" Margin="5" Padding="5"/>
-            <Button  Click="Call_Password_Generator_Window" Margin="5" Padding="5" Content="{StaticResource generate_password_string}"/>
+            <Button Click="Call_Password_Generator_Window" Margin="5" Padding="5" Content="{StaticResource generate_password_string}"/>
         </StackPanel>
         
         </StackPanel>
