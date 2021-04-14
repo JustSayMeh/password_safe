@@ -16,10 +16,13 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="50, 0">
         <Image Source="{StaticResource logo_icon}" Margin="0,0,0,30"/>
         <StackPanel Orientation="Horizontal">
-            <Button Name="ActionButton" Margin="5" Padding="5"/>
+            <Button Click="Call_Password_Window" Name="ActionButton" Margin="5" Padding="5" Content="{StaticResource open_store_string}"/>
             <Button Click="Call_Password_Generator_Window" Margin="5" Padding="5" Content="{StaticResource generate_password_string}"/>
         </StackPanel>
-        
+        <StackPanel Orientation="Horizontal">
+            <Button Click="Call_Empty_Store_Window"  Margin="5" Padding="5"  FontSize="10" Content="{StaticResource new_store_string}"/>
         </StackPanel>
+
+    </StackPanel>
 
 </Window>

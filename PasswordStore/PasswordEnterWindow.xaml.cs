@@ -25,7 +25,7 @@ namespace PasswordStore
     public partial class PasswordEnterWindow : Window
     {
         public NetworkCredential Password { get; private set; }
-        private string store_path;
+
 
         public List<ServiceLoginPassword> Items = new List<ServiceLoginPassword>();
         public void FillList(string text)
@@ -48,10 +48,11 @@ namespace PasswordStore
 
             }
         }
-        public PasswordEnterWindow(string store_path)
+        private CryptoFile cryptoFile;
+        public PasswordEnterWindow(CryptoFile cryptoFile)
         {
             InitializeComponent();
-            this.store_path = store_path;
+            this.cryptoFile = cryptoFile;
             Password1.Focus();
         }
 
@@ -62,7 +63,6 @@ namespace PasswordStore
             
             try
             {
-                CryptoFile cryptoFile = CryptoProtocol.Read(store_path);
                 Crypter crypter = new Crypter(password, cryptoFile.Salt, cryptoFile.IV);
                 string decrypt_data = crypter.Decrypt(cryptoFile.Cipher_text);
                 byte[] hash = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(decrypt_data), crypter.Salt);
@@ -75,11 +75,6 @@ namespace PasswordStore
             {
                 string wront_password = (string)Application.Current.FindResource("wrong_password_string");
                 MessageBox.Show(wront_password, wront_password, MessageBoxButton.OK, MessageBoxImage.Error);
-            } catch (FileFormatException exp)
-            {
-                string file_isnot_store_string = (string)Application.Current.FindResource("file_isnot_store_string");
-                MessageBox.Show(file_isnot_store_string, file_isnot_store_string, MessageBoxButton.OK, MessageBoxImage.Error);
-                this.DialogResult = true;
             }
         }
     }

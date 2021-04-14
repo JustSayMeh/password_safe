@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Microsoft.Win32;
 namespace PasswordStore
 {
     /// <summary>
@@ -27,16 +27,6 @@ namespace PasswordStore
         public StartWindow()
         {
             InitializeComponent();
-            if (File.Exists(store_path))
-            {
-                ActionButton.Click += Call_Password_Window;
-                ActionButton.Content = open_store_string;
-            }
-            else
-            {
-                ActionButton.Click += Call_Empty_Store_Window;
-                ActionButton.Content = create_empty_store_string;
-            }
 
         }
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -47,32 +37,51 @@ namespace PasswordStore
 
         private void Call_Password_Window(object sender, RoutedEventArgs e)
         {
-            PasswordEnterWindow passwordEnterWindow = new PasswordEnterWindow(store_path);
-            if (passwordEnterWindow.ShowDialog() == true)
+            OpenFileDialog openFileDialog = FileDialog.CreateDefaultDialog(false);
+            while (openFileDialog.ShowDialog() == true)
             {
+                store_path = openFileDialog.FileName;
+                try
+                {
+                    CryptoFile cryptoFile = CryptoProtocol.Read(store_path);
+                    PasswordEnterWindow passwordEnterWindow = new PasswordEnterWindow(cryptoFile);
+                    if (passwordEnterWindow.ShowDialog() == true)
+                    {
 
-                Window window = new MainWindow(passwordEnterWindow.Password, passwordEnterWindow.Items, store_path);
-                window.Show();
-                this.Close();
-
-                return;
+                        Window window = new MainWindow(passwordEnterWindow.Password, passwordEnterWindow.Items, store_path);
+                        window.Show();
+                        this.Close();
+                        return;
+                    }
+                }
+                catch (FileFormatException exp)
+                {
+                    string file_isnot_store_string = (string)Application.Current.FindResource("file_isnot_store_string");
+                    MessageBox.Show(file_isnot_store_string, file_isnot_store_string, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+            
         }
 
         private void Call_Empty_Store_Window(object sender, RoutedEventArgs e)
         {
-            EmptyStoreWindow emptyStoreWindow = new EmptyStoreWindow();
-            if (emptyStoreWindow.ShowDialog() == true)
+            OpenFileDialog openFileDialog = FileDialog.CreateDefaultDialog(true);
+            if (openFileDialog.ShowDialog() == true)
             {
-                Crypter crypter = new Crypter(emptyStoreWindow.Password.Password);
-                byte[] encrypted = crypter.Encrypt("");
-                byte[] salty = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(""), crypter.Salt);
-                CryptoFile cryptoFile = new CryptoFile(encrypted, salty, crypter.IV, crypter.Salt);
-                CryptoProtocol.Save(cryptoFile, store_path);
-                Window window = new MainWindow(emptyStoreWindow.Password, new List<ServiceLoginPassword>(), store_path);
-                window.Show();
-                this.Close();
-                return;
+                store_path = openFileDialog.FileName;
+                EmptyStoreWindow emptyStoreWindow = new EmptyStoreWindow();
+                if (emptyStoreWindow.ShowDialog() == true)
+                {
+                    Crypter crypter = new Crypter(emptyStoreWindow.Password.Password);
+                    byte[] encrypted = crypter.Encrypt("");
+                    byte[] salty = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(""), crypter.Salt);
+                    CryptoFile cryptoFile = new CryptoFile(encrypted, salty, crypter.IV, crypter.Salt);
+                    CryptoProtocol.Save(cryptoFile, store_path);
+                    Window window = new MainWindow(emptyStoreWindow.Password, new List<ServiceLoginPassword>(), store_path);
+                    window.Show();
+                    this.Close();
+                    return;
+                }
             }
             
         }

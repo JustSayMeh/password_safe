@@ -46,4 +46,6 @@
     <system:String x:Key="copy_string_2">Скопировано</system:String>
     <system:String x:Key="empty_password_string">Поле пароля не должно быть пустым!</system:String>
     <system:String x:Key="space_password_string">Поле пароля не должно содержать пробелы!</system:String>
+    <system:String x:Key="vault_string">Хранилище</system:String>
+    <system:String x:Key="new_store_string">Новое хранилище</system:String>
 </ResourceDictionary>

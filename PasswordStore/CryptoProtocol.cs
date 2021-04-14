@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace PasswordStore
 {
-    struct CryptoFile
+    public struct CryptoFile
     {
         public byte[] Cipher_text;
         public byte[] Hash;
@@ -68,6 +68,10 @@ namespace PasswordStore
 
             using (BinaryReader streamReader = new BinaryReader(File.Open(filepath, FileMode.OpenOrCreate)))
             {
+                if (streamReader.BaseStream.Position == streamReader.BaseStream.Length)
+                {
+                    throw new FileFormatException("Invalid store file format!");
+                }
                 byte version = streamReader.ReadByte();
                 if (streamReader.BaseStream.Position == streamReader.BaseStream.Length)
                 {
