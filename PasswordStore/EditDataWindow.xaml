@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PasswordStore"
         mc:Ignorable="d"
         Title="Редактирование" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
+        KeyDown="Window_KeyDown"
         Background="{StaticResource window_backgroud_color}">
     <StackPanel>
         <TextBlock Margin="10,5,50,0" Text="{StaticResource service_string}"/>

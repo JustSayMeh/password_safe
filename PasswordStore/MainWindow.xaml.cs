@@ -92,6 +92,7 @@ namespace PasswordStore
                 dataRowView.Password = window.serviceLoginPassword.Password;
                 ItemList.Items.Refresh();
                 storeData();
+                ClearTimer timer = new ClearTimer(3000, statusBar, change_string);
             }
         }
         private void Button_Click_Remove(object sender, RoutedEventArgs e)
