@@ -48,4 +48,5 @@
     <system:String x:Key="space_password_string">Поле пароля не должно содержать пробелы!</system:String>
     <system:String x:Key="vault_string">Хранилище</system:String>
     <system:String x:Key="new_store_string">Новое хранилище</system:String>
+    <system:String x:Key="copy_to_clipboard_string">Скопировано в буфер</system:String>
 </ResourceDictionary>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,6 +23,7 @@ namespace PasswordStore
     {
         private string generate_string = (string)Application.Current.FindResource("generate_string");
         private string copy_string = (string)Application.Current.FindResource("copy_string_2");
+        private string copy_to_clipboard_string = (string)Application.Current.FindResource("copy_to_clipboard_string");
         private NetworkCredential password_ = null;
         public PasswordGeneratorWindow()
         {
@@ -57,6 +59,8 @@ namespace PasswordStore
             Clipboard.SetText(password.Password);
             password_ = password;
             GButton.Content = copy_string;
+            statusBar.Text = copy_to_clipboard_string;
+            ClearTimer timer = new ClearTimer(3000, statusBar);
             return;
         }
 
