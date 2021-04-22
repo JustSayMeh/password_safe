@@ -38,7 +38,7 @@ namespace PasswordStore
         private void Call_Password_Window(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = FileDialog.CreateDefaultDialog(false);
-            while (openFileDialog.ShowDialog() == true)
+            if (openFileDialog.ShowDialog() == true)
             {
                 store_path = openFileDialog.FileName;
                 try
