@@ -59,8 +59,7 @@ namespace PasswordStore
             Clipboard.SetText(password.Password);
             password_ = password;
             GButton.Content = copy_string;
-            statusBar.Text = copy_to_clipboard_string;
-            ClearTimer timer = new ClearTimer(3000, statusBar);
+            ClearTimer timer = new ClearTimer(3000, statusBar, copy_to_clipboard_string);
             return;
         }
 

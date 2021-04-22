@@ -42,7 +42,11 @@ namespace PasswordStore
         private string delete_row_string = (string)Application.Current.FindResource("delete_row_string");
         private string delete_string = (string)Application.Current.FindResource("delete_string");
         private string search_string = (string)Application.Current.FindResource("search_string");
-
+        private string copy_to_clipboard_string = (string)Application.Current.FindResource("copy_to_clipboard_string");
+        private string clear_clipboard_string = (string)Application.Current.FindResource("clear_clipboard_string");
+        private string change_string = (string)Application.Current.FindResource("change_string");
+        private string remove_string = (string)Application.Current.FindResource("remove_string");
+        private string added_string = (string)Application.Current.FindResource("added_string");
 
         private NetworkCredential MasterPassword;
         List<ServiceLoginPassword> items = new List<ServiceLoginPassword>();
@@ -59,16 +63,18 @@ namespace PasswordStore
 
         private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualHeight - toolBar.Height - menuPanel.ActualHeight - 25 < 100)
+            if (this.ActualHeight - toolBar.Height - menuPanel.ActualHeight - statusBar.ActualHeight - 25 < 100)
                 ItemList.Height = 100;
             else
-                ItemList.Height = this.ActualHeight - toolBar.Height - menuPanel.ActualHeight - 25;
+                ItemList.Height = this.ActualHeight - toolBar.Height - menuPanel.ActualHeight - statusBar.ActualHeight - 50;
         }
 
         private void TextBox_CopyToClipboard(object sender, MouseButtonEventArgs e)
         {
             Clipboard.SetText(((TextBox)sender).Text);
             ((TextBox)sender).SelectAll();
+          
+
         }
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
@@ -97,6 +103,7 @@ namespace PasswordStore
                 items.Remove(dataRowView);
                 ItemList.Items.Refresh();
                 storeData();
+                ClearTimer timer = new ClearTimer(3000, statusBar, remove_string);
             }
 
         }
@@ -105,6 +112,7 @@ namespace PasswordStore
         {
             ServiceLoginPassword dataRowView = (ServiceLoginPassword)((Button)e.Source).DataContext;
             Clipboard.SetText(dataRowView.Password.Password);
+            ClearTimer timer = new ClearTimer(3000, statusBar, copy_to_clipboard_string);
         }
 
         public void storeData()
@@ -129,6 +137,7 @@ namespace PasswordStore
                 items.Add(window.serviceLoginPassword);
                 ItemList.Items.Refresh();
                 storeData();
+                ClearTimer timer = new ClearTimer(3000, statusBar, added_string);
             }
         }
 
@@ -148,6 +157,7 @@ namespace PasswordStore
         private void Button_Click_Clear(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText("");
+            ClearTimer timer = new ClearTimer(3000, statusBar, clear_clipboard_string);
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -169,6 +179,7 @@ namespace PasswordStore
             {
                 MasterPassword = changePasswordWindow.NewPassword;
                 storeData();
+                ClearTimer timer = new ClearTimer(3000, statusBar, change_string);
             }
         }
 

@@ -12,9 +12,10 @@ namespace PasswordStore
     {
         private Timer timer;
         private TextBlock textBlock;
-        public ClearTimer(double interval, TextBlock textBlock)
+        public ClearTimer(double interval, TextBlock textBlock, string text)
         {
             timer = new Timer(interval);
+            textBlock.Dispatcher.Invoke(new Action(() => { textBlock.Text = text; }));
             timer.Enabled = true;
             this.textBlock = textBlock;
             timer.Elapsed += OnClear;

@@ -10,6 +10,7 @@
     <system:String x:Key="start_window_string">Начальная страница</system:String>
     <system:String x:Key="exit_string">Выйти</system:String>
     <system:String x:Key="add_string">Добавить</system:String>
+    <system:String x:Key="added_string">Добавлено</system:String>
     <system:String x:Key="clear_buffer_string">Очистить буфер</system:String>
     <system:String x:Key="change_master_password_string">Изменить Мастер-пароль</system:String>
     <system:String x:Key="exit_to_start_screen">Выйти на начальный экран</system:String>
@@ -49,4 +50,8 @@
     <system:String x:Key="vault_string">Хранилище</system:String>
     <system:String x:Key="new_store_string">Новое хранилище</system:String>
     <system:String x:Key="copy_to_clipboard_string">Скопировано в буфер</system:String>
+    <system:String x:Key="clear_clipboard_string">Буфер очищен</system:String>
+    <system:String x:Key="change_string">Изменено</system:String>
+    <system:String x:Key="remove_string">Удалено</system:String>
+
 </ResourceDictionary>
