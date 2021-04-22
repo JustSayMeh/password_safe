@@ -54,6 +54,15 @@ namespace PasswordStore
             ItemList.ItemsSource = items;
             MasterPassword = password;
             this.store_path = store_path;
+            this.SizeChanged += MainWindow_SizeChanged;
+        }
+
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.ActualHeight - toolBar.Height - menuPanel.ActualHeight - 25 < 100)
+                ItemList.Height = 100;
+            else
+                ItemList.Height = this.ActualHeight - toolBar.Height - menuPanel.ActualHeight - 25;
         }
 
         private void TextBox_CopyToClipboard(object sender, MouseButtonEventArgs e)

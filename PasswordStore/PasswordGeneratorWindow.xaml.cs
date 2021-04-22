@@ -68,5 +68,10 @@ namespace PasswordStore
                 GButton.Content = generate_string;
             }
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
     }
 }

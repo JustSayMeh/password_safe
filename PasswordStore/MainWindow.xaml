@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordStore"
         mc:Ignorable="d"
-        Title="{StaticResource title_string}" Height="450" Width="800"
+        Title="{StaticResource title_string}" Height="450" Width="800" MinHeight="200"
         Icon="{StaticResource key32_icon}"
         
         Background="{StaticResource window_backgroud_color}">
-    <StackPanel>
-        <Menu>
+    <StackPanel >
+        <Menu Name="menuPanel">
             <MenuItem Header="File">
                 <MenuItem Header="{StaticResource generate_password_string}"  Click="Generate_New_Password">
                     <MenuItem.Icon>
@@ -41,7 +41,7 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <ToolBar Height="25" VerticalAlignment="Top">
+        <ToolBar Height="25" VerticalAlignment="Top" Name="toolBar">
             <Button Click="Button_Click_Add">
                 <Button.ToolTip>
                     <ToolTip Content="{StaticResource add_string}"/>
@@ -74,7 +74,7 @@
         </ToolBar>
         <DataGrid HeadersVisibility="Column"  CanUserSortColumns="False" CanUserResizeRows="False"  
                   CanUserResizeColumns="False" Name="ItemList" AutoGenerateColumns="False" 
-                  ColumnWidth="*" CanUserReorderColumns="False">
+                  ColumnWidth="*" CanUserReorderColumns="False" SelectionUnit="FullRow" >
 
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
