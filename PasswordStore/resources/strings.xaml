@@ -2,6 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:PasswordStore.resources"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="app_name_string">Password Vault</system:String>
+    <system:String x:Key="password_store_string">Хранилище паролей</system:String>
+    <system:String x:Key="github_string">https://github.com/JustSayMeh</system:String>
     <system:String x:Key="different_passwords_string">Пароли не совпадают!</system:String>
     <system:String x:Key="confirm_password_string">Подтвердите пароль</system:String>
     <system:String x:Key="wrong_password_string">Неверный пароль!</system:String>

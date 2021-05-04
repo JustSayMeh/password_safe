@@ -1,0 +1,18 @@
+﻿<Window x:Class="PasswordStore.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordStore"
+        mc:Ignorable="d"
+        Title="{StaticResource title_string}" Height="250" Width="400"
+        Icon="{StaticResource key32_icon}"
+        ShowInTaskbar="True"
+        ResizeMode="NoResize"
+        Background="{StaticResource window_backgroud_color}">
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="50, 0">
+        <Image Source="{StaticResource logo_icon}" Margin="0,0,0,30"/>
+        <TextBlock>Хранилище паролей</TextBlock>
+        <TextBlock>Разработчик: <Hyperlink NavigateUri="https://github.com/JustSayMeh" >https://github.com/JustSayMeh</Hyperlink></TextBlock>
+    </StackPanel>
+</Window>

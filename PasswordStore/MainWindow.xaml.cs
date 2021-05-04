@@ -215,6 +215,8 @@ namespace PasswordStore
 
         private void About(object sender, RoutedEventArgs e)
         {
+            AboutWindow about = new AboutWindow();
+            about.Show();
 
         }
     }
