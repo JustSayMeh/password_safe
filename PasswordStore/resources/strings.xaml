@@ -54,4 +54,6 @@
     <system:String x:Key="change_string">Изменено</system:String>
     <system:String x:Key="remove_string">Удалено</system:String>
 
+    <system:String x:Key="about_string">О программе</system:String>
+    <system:String x:Key="Edit_string">Edit</system:String>
 </ResourceDictionary>

@@ -212,5 +212,10 @@ namespace PasswordStore
                 SearchBox.Text = search_string;
             }
         }
+
+        private void About(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -28,7 +28,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Edit">
+                <MenuItem Header="{StaticResource Edit_string}">
                     <MenuItem Header="{StaticResource add_string}" Click="Button_Click_Add">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource plus_icon}"/>
@@ -39,6 +39,9 @@
                             <Image Source="{StaticResource shuffle_icon}"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{StaticResource about_string}" Click="About">
+                    
                 </MenuItem>
             </Menu>
             <ToolBar Height="25" VerticalAlignment="Top" Name="toolBar">
