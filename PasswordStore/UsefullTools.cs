@@ -15,13 +15,27 @@ namespace PasswordStore
             return new string(Enumerable.Repeat(str, length).Select(s => s[random.Next(str.Length)]).ToArray());
         }
 
+        private static uint[] generateNumbers(int length)
+        {
+            byte[] bytes = new byte[length * sizeof(int)];
+            uint[] numbers = new uint[length];
+            RandomNumberGenerator randomNumberGenerator = new RNGCryptoServiceProvider();
+            randomNumberGenerator.GetBytes(bytes);
+            for (int i = 0; i < length; i++)
+            {
+                numbers[i] = BitConverter.ToUInt32(bytes, i * 4);
+            }
+            return numbers;
+        }
+
         public static SecureString GenerateRandomSecureString(string str, int length)
         {
             SecureString secureString = new SecureString();
-            Random random = new Random();
+            uint[] numbers = generateNumbers(length);
             for (int i = 0; i < length; i++)
             {
-                secureString.AppendChar(str[random.Next(str.Length)]);
+                uint index = (uint)(numbers[i] % str.Length);
+                secureString.AppendChar(str[Math.Abs((int)index)]);
             }
             return secureString;
         }
