@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordStore.Factories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -73,8 +74,6 @@ namespace PasswordStore
         {
             Clipboard.SetText(((TextBox)sender).Text);
             ((TextBox)sender).SelectAll();
-          
-
         }
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
@@ -124,9 +123,7 @@ namespace PasswordStore
             {
                 str.Append($"{slp.ServiceName} : {slp.Login} : {slp.Password.Password}\n");
             }
-            byte[] encrypted = crypter.Encrypt(str.ToString());
-            byte[] salty = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(str.ToString()), crypter.Salt);
-            CryptoFile cryptoFile = new CryptoFile(encrypted, salty, crypter.IV, crypter.Salt);
+            CryptoFile cryptoFile = CryptoFileFactory.CreateCryptoFile(ProtocolVersions.LASTVERSION, MasterPassword, str.ToString());
             CryptoProtocol.Save(cryptoFile, store_path);
         }
 
@@ -217,7 +214,6 @@ namespace PasswordStore
         {
             AboutWindow about = new AboutWindow();
             about.Show();
-
         }
     }
 }

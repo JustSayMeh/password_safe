@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using PasswordStore.Factories;
+
 namespace PasswordStore
 {
     /// <summary>
@@ -27,8 +29,8 @@ namespace PasswordStore
         public StartWindow()
         {
             InitializeComponent();
-
         }
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -47,7 +49,6 @@ namespace PasswordStore
                     PasswordEnterWindow passwordEnterWindow = new PasswordEnterWindow(cryptoFile);
                     if (passwordEnterWindow.ShowDialog() == true)
                     {
-
                         Window window = new MainWindow(passwordEnterWindow.Password, passwordEnterWindow.Items, store_path);
                         window.Show();
                         this.Close();
@@ -72,10 +73,7 @@ namespace PasswordStore
                 EmptyStoreWindow emptyStoreWindow = new EmptyStoreWindow();
                 if (emptyStoreWindow.ShowDialog() == true)
                 {
-                    Crypter crypter = new Crypter(emptyStoreWindow.Password.Password);
-                    byte[] encrypted = crypter.Encrypt("");
-                    byte[] salty = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(""), crypter.Salt);
-                    CryptoFile cryptoFile = new CryptoFile(encrypted, salty, crypter.IV, crypter.Salt);
+                    CryptoFile cryptoFile = CryptoFileFactory.CreateCryptoFile(ProtocolVersions.LASTVERSION, emptyStoreWindow.Password, "");
                     CryptoProtocol.Save(cryptoFile, store_path);
                     Window window = new MainWindow(emptyStoreWindow.Password, new List<ServiceLoginPassword>(), store_path);
                     window.Show();

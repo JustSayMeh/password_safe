@@ -7,12 +7,14 @@ using System.Text.RegularExpressions;
 
 namespace PasswordStore
 {
+
     public struct CryptoFile
     {
         public byte[] Cipher_text;
         public byte[] Hash;
         public byte[] IV;
         public byte[] Salt;
+        public byte Version;
         /// <summary>
         /// 
         /// </summary>
@@ -20,18 +22,17 @@ namespace PasswordStore
         /// <param name="hash">соленный хэш</param>
         /// <param name="iv">вектор инициализации</param>
         /// <param name="salt">соль</param>
-        public CryptoFile(byte[] cipher_text, byte[] hash, byte[] iv, byte[] salt)
+        public CryptoFile(byte[] cipher_text, byte[] hash, byte[] iv, byte[] salt, byte version)
         {
             Cipher_text = cipher_text;
             Hash = hash;
             IV = iv;
             Salt = salt;
+            Version = version;
         }
     }
     class CryptoProtocol
     {
-        private string plaindata;
-        private Crypter crypter;
         private const byte version_byte = 0x01;
         private const byte cipher_byte = 0xd0;
         private const byte hash_byte = 0xd1;
@@ -73,6 +74,7 @@ namespace PasswordStore
                     throw new FileFormatException("Invalid store file format!");
                 }
                 byte version = streamReader.ReadByte();
+                file.Version = version;
                 if (streamReader.BaseStream.Position == streamReader.BaseStream.Length)
                 {
                     throw new FileFormatException("Invalid store file format!");

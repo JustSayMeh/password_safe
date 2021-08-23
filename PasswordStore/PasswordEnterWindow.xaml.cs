@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordStore.Verificators;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -60,14 +61,12 @@ namespace PasswordStore
         {
             string password = Password1.Password;
             Password = new NetworkCredential("", Password1.Password);
-            
             try
             {
+                if (!PasswordVerificator.PasswordIsValid(Factories.ProtocolVersions.LASTVERSION, Password, cryptoFile))
+                    throw new CryptographicException();
                 Crypter crypter = new Crypter(password, cryptoFile.Salt, cryptoFile.IV);
                 string decrypt_data = crypter.Decrypt(cryptoFile.Cipher_text);
-                byte[] hash = UsefulTools.ComputeSaltySHA256(Encoding.UTF8.GetBytes(decrypt_data), crypter.Salt);
-                if (!StructuralComparisons.StructuralEqualityComparer.Equals(hash, cryptoFile.Hash))
-                    throw new CryptographicException();
                 FillList(decrypt_data);
                 this.DialogResult = true;
             }
