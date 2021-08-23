@@ -14,4 +14,5 @@
     <BitmapImage x:Key="key_icon" UriSource="\images\keys.png"/>
     <BitmapImage x:Key="key32_icon" UriSource="\images\icon2.png"/>
     <BitmapImage x:Key="logo_icon" UriSource="\images\logo.png"/>
+    <BitmapImage x:Key="telegram_icon" UriSource="\images\telegram.png"/>
 </ResourceDictionary>

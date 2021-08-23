@@ -1,23 +1,15 @@
 ﻿using PasswordStore.Factories;
-using System;
+using PasswordStore.Windows;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Security;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PasswordStore
 {
@@ -214,6 +206,12 @@ namespace PasswordStore
         {
             AboutWindow about = new AboutWindow();
             about.Show();
+        }
+
+        private void Button_Telegram_Click(object sender, RoutedEventArgs e)
+        {
+            TelegramAuthWindow telegram_window = new TelegramAuthWindow();
+            telegram_window.Show();
         }
     }
 }

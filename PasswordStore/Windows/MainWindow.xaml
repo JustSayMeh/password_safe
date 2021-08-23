@@ -27,6 +27,11 @@
                             <Image Source="{StaticResource exit_icon}"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Header="{StaticResource telegram_string}" Click="Button_Telegram_Click">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource telegram_icon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="{StaticResource Edit_string}">
                     <MenuItem Header="{StaticResource add_string}" Click="Button_Click_Add">
