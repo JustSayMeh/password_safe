@@ -8,6 +8,9 @@
         Title="{StaticResource title_string}" Height="450" Width="800" MinHeight="200"
         Icon="{StaticResource key32_icon}"
         Background="{StaticResource window_backgroud_color}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+    </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
             <Menu Name="menuPanel">
@@ -27,7 +30,7 @@
                             <Image Source="{StaticResource exit_icon}"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{StaticResource telegram_string}" Click="Button_Telegram_Click">
+                    <MenuItem Name="TelegramAuthIcon" Header="{StaticResource telegram_string}" Click="Button_Telegram_Click">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource telegram_icon}"/>
                         </MenuItem.Icon>
@@ -75,6 +78,20 @@
                     </Button.ToolTip>
                     <Image Source="{StaticResource door_icon}" />
                 </Button>
+                <Separator/>
+                <Button Click="Button_Telegram_Upload" Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}">
+                        <Button.ToolTip>
+                            <ToolTip Content="{StaticResource add_string}"/>
+                        </Button.ToolTip>
+                        <Image Source="{StaticResource telegram_upload_icon}" />
+                    </Button>
+                <Button Click="Button_Telegram_Download" Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}">
+                    <Button.ToolTip>
+                        <ToolTip Content="{StaticResource add_string}"/>
+                    </Button.ToolTip>
+                    <Image Source="{StaticResource telegram_download_icon}" />
+                </Button>
+                <Separator/>
                 <TextBox GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" Foreground="Gray" FontSize="10" Name="SearchBox" 
                          KeyUp="TextBox_KeyUp" MinWidth="200" 
                          Text="{StaticResource search_string}">

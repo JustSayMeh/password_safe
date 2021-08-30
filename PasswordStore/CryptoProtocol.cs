@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace PasswordStore
 {
@@ -34,6 +36,28 @@ namespace PasswordStore
         private const byte IV_byte = 0xd2;
         private const byte salt_byte = 0xd3;
 
+        public static List<ServiceLoginPassword> FillList(string text)
+        {
+            List<ServiceLoginPassword> Items = new List<ServiceLoginPassword>();
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using StreamWriter streamWriter = new StreamWriter(memoryStream);
+
+                streamWriter.Write(text);
+                streamWriter.Flush();
+                memoryStream.Position = 0;
+                using (StreamReader streamReader = new StreamReader(memoryStream))
+                {
+                    while (!streamReader.EndOfStream)
+                    {
+                        string[] arr = streamReader.ReadLine().Split(new string[] { " : " }, StringSplitOptions.None);
+                        Items.Add(new ServiceLoginPassword(arr[0].Trim(), arr[1].Trim(), arr[2].Trim()));
+                    }
+                }
+
+            }
+            return Items;
+        }
 
         public static void Save(CryptoFile crypto_file, string filepath)
         {
@@ -55,14 +79,16 @@ namespace PasswordStore
                 writer.Write(crypto_file.Salt);
             }
         }
-
-
         public static CryptoFile Read(string filepath)
+        {
+            return Read(File.Open(filepath, FileMode.OpenOrCreate));
+        }
+
+        public static CryptoFile Read(Stream stream)
         {
             CryptoFile file = new CryptoFile();
             int size;
-
-            using (BinaryReader streamReader = new BinaryReader(File.Open(filepath, FileMode.OpenOrCreate)))
+            using (BinaryReader streamReader = new BinaryReader(stream))
             {
                 if (streamReader.BaseStream.Position == streamReader.BaseStream.Length)
                 {

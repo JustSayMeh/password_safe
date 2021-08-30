@@ -29,26 +29,7 @@ namespace PasswordStore
 
 
         public List<ServiceLoginPassword> Items = new List<ServiceLoginPassword>();
-        public void FillList(string text)
-        {
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                using StreamWriter streamWriter = new StreamWriter(memoryStream);
 
-                streamWriter.Write(text);
-                streamWriter.Flush();
-                memoryStream.Position = 0;
-                using (StreamReader streamReader = new StreamReader(memoryStream))
-                {
-                    while (!streamReader.EndOfStream)
-                    {
-                        string[] arr = streamReader.ReadLine().Split(new string[] { " : "}, StringSplitOptions.None);
-                        Items.Add(new ServiceLoginPassword(arr[0].Trim(), arr[1].Trim(), arr[2].Trim()));
-                    }
-                }
-
-            }
-        }
         private CryptoFile cryptoFile;
         public PasswordEnterWindow(CryptoFile cryptoFile)
         {
@@ -67,7 +48,7 @@ namespace PasswordStore
                     throw new CryptographicException();
                 Crypter crypter = new Crypter(password, cryptoFile.Salt, cryptoFile.IV);
                 string decrypt_data = crypter.Decrypt(cryptoFile.Cipher_text);
-                FillList(decrypt_data);
+                Items = CryptoProtocol.FillList(decrypt_data);
                 this.DialogResult = true;
             }
             catch (CryptographicException exp)

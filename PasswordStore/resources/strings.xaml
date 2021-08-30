@@ -61,4 +61,9 @@
     <system:String x:Key="Edit_string">Edit</system:String>
     <system:String x:Key="telegram_string">Связать с Телеграм</system:String>
     <system:String x:Key="enter_phone_number_string">Введите номер телефона</system:String>
+    <system:String x:Key="recive_code_string">Получить код</system:String>
+    <system:String x:Key="send_code_string">Отправить код</system:String>
+    <system:String x:Key="enter_code_string">Введите полученный код</system:String>
+    <system:String x:Key="auth_string">Авторизоваться</system:String>
+    <system:String x:Key="change_number_string">Изменить номер</system:String>
 </ResourceDictionary>

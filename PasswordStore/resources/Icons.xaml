@@ -15,4 +15,7 @@
     <BitmapImage x:Key="key32_icon" UriSource="\images\icon2.png"/>
     <BitmapImage x:Key="logo_icon" UriSource="\images\logo.png"/>
     <BitmapImage x:Key="telegram_icon" UriSource="\images\telegram.png"/>
+    <BitmapImage x:Key="telegram_upload_icon" UriSource="\images\telegram-upload.png"/>
+    <BitmapImage x:Key="telegram_download_icon" UriSource="\images\telegram-download.png"/>
+  
 </ResourceDictionary>

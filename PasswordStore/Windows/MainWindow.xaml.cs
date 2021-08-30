@@ -1,11 +1,15 @@
 ﻿using PasswordStore.Factories;
+using PasswordStore.Managers;
 using PasswordStore.Windows;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -44,6 +48,7 @@ namespace PasswordStore
         private NetworkCredential MasterPassword;
         List<ServiceLoginPassword> items = new List<ServiceLoginPassword>();
         string store_path;
+        MainWindowViewModel dataContext = new MainWindowViewModel();
         public MainWindow(NetworkCredential password, List<ServiceLoginPassword> items, string store_path)
         {
             InitializeComponent();
@@ -52,6 +57,11 @@ namespace PasswordStore
             MasterPassword = password;
             this.store_path = store_path;
             this.SizeChanged += MainWindow_SizeChanged;
+            this.DataContext = dataContext;
+            if (TelegramApiManager.getInstance().IsUserAuthorized())
+            {
+                dataContext.TelegramWidgetsVisible = true;
+            }
         }
 
         private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -211,7 +221,36 @@ namespace PasswordStore
         private void Button_Telegram_Click(object sender, RoutedEventArgs e)
         {
             TelegramAuthWindow telegram_window = new TelegramAuthWindow();
-            telegram_window.Show();
+            if (telegram_window.ShowDialog() == true)
+            {
+                TelegramAuthIcon.Visibility = Visibility.Collapsed;
+                dataContext.TelegramWidgetsVisible = true;
+            }
+        }
+
+        private void Button_Telegram_Upload(object sender, RoutedEventArgs e)
+        {
+            TelegramApiManager.getInstance().SendFileToMyselfAsync(store_path);
+            ClearTimer timer = new ClearTimer(3000, statusBar, "Отправлено");
+        }
+
+        private async void Button_Telegram_Download(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Обновить файл ?", "Обновить файл ?", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
+                return;
+            var manager = TelegramApiManager.getInstance();
+            byte[] bytes = await manager.LoadFileAsync(store_path);
+            MemoryStream stream = new MemoryStream(bytes);
+            var cryptoFile = CryptoProtocol.Read(stream);
+            Crypter crypter = new Crypter(MasterPassword.Password, cryptoFile.Salt, cryptoFile.IV);
+            string decrypt_data = crypter.Decrypt(cryptoFile.Cipher_text);
+            var Items = CryptoProtocol.FillList(decrypt_data);
+            items = Items;
+            ItemList.ItemsSource = Items;
+            ItemList.Items.Refresh();
+            storeData();
+            ClearTimer timer = new ClearTimer(3000, statusBar, "Обновлено");
+            return;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordStore.Managers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,11 @@ namespace PasswordStore
     /// </summary>
     public partial class App : Application
     {
+        async void App_Startup(object sender, StartupEventArgs e)
+        {
+            await TelegramApiManager.getInstance().InitAsync();
+            StartWindow window = new StartWindow();
+            window.Show();
+        }
     }
 }
