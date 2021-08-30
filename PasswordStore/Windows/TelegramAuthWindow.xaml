@@ -9,6 +9,9 @@
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
         Background="{StaticResource window_backgroud_color}">
     <StackPanel Margin="10">
+        <TextBlock HorizontalAlignment="Center" Text="{StaticResource enter_password_string}"/>
+        <PasswordBox Name="Password" MinWidth="250" Margin="10,5,10,0" Padding="5"></PasswordBox>
+    
         <TextBlock HorizontalAlignment="Center" Text="{StaticResource enter_phone_number_string}"/>
         <TextBox Name="PhoneNumber" MinWidth="250" Margin="10,5,10,0" Padding="5"></TextBox>
         <WrapPanel HorizontalAlignment="Center">

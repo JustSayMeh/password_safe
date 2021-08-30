@@ -221,7 +221,7 @@ namespace PasswordStore
 
         private void Button_Telegram_Click(object sender, RoutedEventArgs e)
         {
-            TelegramAuthWindow telegram_window = new TelegramAuthWindow();
+            TelegramAuthWindow telegram_window = new TelegramAuthWindow(MasterPassword);
             if (telegram_window.ShowDialog() == true)
             {
                 TelegramAuthIcon.Visibility = Visibility.Collapsed;

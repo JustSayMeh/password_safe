@@ -78,7 +78,7 @@
                     </Button.ToolTip>
                     <Image Source="{StaticResource door_icon}" />
                 </Button>
-                <Separator/>
+                <Separator Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}"/>
                 <Button Click="Button_Telegram_Upload" Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}">
                         <Button.ToolTip>
                             <ToolTip Content="{StaticResource add_string}"/>
