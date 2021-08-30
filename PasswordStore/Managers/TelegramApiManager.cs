@@ -57,7 +57,7 @@ namespace PasswordStore.Managers
         public async void SendFileToMyselfAsync(string path)
         {
             var user = await client.GetMeAsync();
-            long id = user.Id;
+            var chat = await client.CreatePrivateChatAsync(user.Id);
             InputMessageDocument content = new InputMessageDocument();
             InputFileLocal file = new InputFileLocal();
             file.Path = path;
@@ -66,7 +66,7 @@ namespace PasswordStore.Managers
             content.Document = file;
             content.DataType = "inputMessageDocument";
             content.Extra = "1";
-            await client.SendMessageAsync(id, 0, 0, null, null, content);
+            await client.SendMessageAsync(chat.Id, 0, 0, null, null, content);
         }
 
         public async Task<byte[]> LoadFileAsync(string path)
@@ -101,9 +101,9 @@ namespace PasswordStore.Managers
         private async Task<IList<MessageDocument>> GetFileVaultFiles()
         {
             var user = await client.GetMeAsync();
-            long id = user.Id;
+            var chat = await client.CreatePrivateChatAsync(user.Id);
             List<MessageDocument> list = new List<MessageDocument>();
-            var messages = await client.GetChatHistoryAsync(chatId: id, limit: 99, fromMessageId: 0);
+            var messages = await client.GetChatHistoryAsync(chatId: chat.Id, limit: 99, fromMessageId: 0);
             while (messages.TotalCount > 0)
             {
                 foreach (var th in messages.Messages_)
@@ -116,7 +116,7 @@ namespace PasswordStore.Managers
                     }
                 }
                 var last = messages.Messages_[messages.Messages_.Length - 1];
-                messages = await client.GetChatHistoryAsync(chatId: id, limit: 50, fromMessageId: last.Id);
+                messages = await client.GetChatHistoryAsync(chatId: chat.Id, limit: 50, fromMessageId: last.Id);
             }
             return list;
         }

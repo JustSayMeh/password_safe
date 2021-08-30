@@ -61,6 +61,7 @@ namespace PasswordStore
             if (TelegramApiManager.getInstance().IsUserAuthorized())
             {
                 dataContext.TelegramWidgetsVisible = true;
+                TelegramAuthIcon.Visibility = Visibility.Collapsed;
             }
         }
 

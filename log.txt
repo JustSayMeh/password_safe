@@ -1,0 +1,69 @@
+2021-08-30 21:00:03.204 +07:00 [INF] Loaded 5 extensions
+2021-08-30 21:00:04.581 +07:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.400\
+2021-08-30 21:00:05.287 +07:00 [INF] Found Visual Studio v16.9.31105.61 [C:\Program Files (x86)\Microsoft Visual Studio\2019\Community]
+2021-08-30 21:00:07.298 +07:00 [INF] Initializing upgrade step Select an entrypoint
+2021-08-30 21:00:07.301 +07:00 [INF] Setting entrypoint to only project in solution: C:\Users\Oleg\source\repos\password_safe\PasswordStore\PasswordStore.csproj
+2021-08-30 21:00:07.310 +07:00 [INF] Initializing upgrade step Select project to upgrade
+2021-08-30 21:00:07.398 +07:00 [INF] Initializing upgrade step Back up project
+2021-08-30 21:00:26.858 +07:00 [INF] Applying upgrade step Back up project
+2021-08-30 21:00:32.732 +07:00 [INF] Backing up C:\Users\Oleg\source\repos\password_safe\PasswordStore to C:\Users\Oleg\source\repos\password_safe.backup\PasswordStore
+2021-08-30 21:00:33.941 +07:00 [INF] Project backed up to C:\Users\Oleg\source\repos\password_safe.backup\PasswordStore
+2021-08-30 21:00:33.942 +07:00 [INF] Upgrade step Back up project applied successfully
+2021-08-30 21:00:38.124 +07:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-08-30 21:00:41.939 +07:00 [INF] Applying upgrade step Convert project file to SDK style
+2021-08-30 21:00:41.941 +07:00 [INF] Converting project file format with try-convert, version 0.9.232202
+2021-08-30 21:00:42.464 +07:00 [INF] [dotnet] C:\Users\Oleg\source\repos\password_safe\PasswordStore\PasswordStore.csproj contains an App.config file. App.config is replaced by appsettings.json in .NET Core. You will need to delete App.config and migrate to appsettings.json if it's applicable to your project.
+2021-08-30 21:00:44.982 +07:00 [INF] [dotnet] Conversion complete!
+2021-08-30 21:00:45.739 +07:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2021-08-30 21:00:47.251 +07:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2021-08-30 21:00:49.344 +07:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-08-30 21:00:50.330 +07:00 [INF] Marking package Newtonsoft.Json for removal because it appears to be a transitive dependency
+2021-08-30 21:00:50.334 +07:00 [INF] Marking package TDLib.Api for removal because it appears to be a transitive dependency
+2021-08-30 21:00:51.144 +07:00 [INF] Reference to .NET Upgrade Assistant analyzer package (Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, version 0.2.241603) needs added
+2021-08-30 21:00:51.150 +07:00 [INF] Packages to be removed: Operation { Item = Newtonsoft.Json, Version=11.0.1, OperationDetails = OperationDetails { Risk = None, Details = System.Linq.EmptyPartition`1[System.String] } }
+Operation { Item = TDLib.Api, Version=1.7.0, OperationDetails = OperationDetails { Risk = None, Details = System.Linq.EmptyPartition`1[System.String] } }
+2021-08-30 21:00:51.151 +07:00 [INF] Packages to be added: Operation { Item = Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.241603, OperationDetails = OperationDetails { Risk = None, Details = System.Linq.EmptyPartition`1[System.String] } }
+2021-08-30 21:00:54.349 +07:00 [INF] Applying upgrade step Clean up NuGet package references
+2021-08-30 21:00:54.352 +07:00 [INF] Removing outdated package reference: Newtonsoft.Json, Version=11.0.1
+2021-08-30 21:00:54.353 +07:00 [INF] Removing outdated package reference: TDLib.Api, Version=1.7.0
+2021-08-30 21:00:54.354 +07:00 [INF] Adding package reference: Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.241603
+2021-08-30 21:00:56.766 +07:00 [INF] Upgrade step Clean up NuGet package references applied successfully
+2021-08-30 21:01:03.513 +07:00 [INF] Initializing upgrade step Update TFM
+2021-08-30 21:01:03.520 +07:00 [INF] Recommending Windows TFM net5.0-windows because the project either has Windows-specific dependencies or builds to a WinExe
+2021-08-30 21:01:03.522 +07:00 [INF] TFM needs updated to net5.0-windows
+2021-08-30 21:01:07.198 +07:00 [INF] Applying upgrade step Update TFM
+2021-08-30 21:01:07.200 +07:00 [INF] Recommending Windows TFM net5.0-windows because the project either has Windows-specific dependencies or builds to a WinExe
+2021-08-30 21:01:11.789 +07:00 [INF] Updated TFM to net5.0-windows
+2021-08-30 21:01:11.790 +07:00 [INF] Upgrade step Update TFM applied successfully
+2021-08-30 21:01:19.828 +07:00 [INF] Initializing upgrade step Update NuGet Packages
+2021-08-30 21:01:21.500 +07:00 [INF] Marking package DotNetZip, Version=1.11.0 for removal because it doesn't support the target framework but a newer version (1.15.0) does
+2021-08-30 21:01:23.638 +07:00 [INF] Adding Microsoft.Windows.Compatibility 5.0.2
+2021-08-30 21:01:23.640 +07:00 [INF] Packages to be removed: Operation { Item = DotNetZip, Version=1.11.0, OperationDetails = OperationDetails { Risk = None, Details = System.Collections.Generic.List`1[System.String] } }
+2021-08-30 21:01:23.641 +07:00 [INF] Packages to be added: Operation { Item = DotNetZip, Version=1.15.0, OperationDetails = OperationDetails { Risk = Low, Details = System.Collections.Generic.List`1[System.String] } }
+Operation { Item = Microsoft.Windows.Compatibility, Version=5.0.2, OperationDetails = OperationDetails { Risk = None, Details = System.Linq.EmptyPartition`1[System.String] } }
+2021-08-30 21:01:26.851 +07:00 [INF] Applying upgrade step Update NuGet Packages
+2021-08-30 21:01:26.852 +07:00 [INF] Removing outdated package reference: DotNetZip, Version=1.11.0
+2021-08-30 21:01:26.853 +07:00 [INF] Adding package reference: DotNetZip, Version=1.15.0
+2021-08-30 21:01:26.853 +07:00 [INF] Adding package reference: Microsoft.Windows.Compatibility, Version=5.0.2
+2021-08-30 21:01:42.686 +07:00 [INF] Marking package System.Data.DataSetExtensions for removal because it appears to be a transitive dependency
+2021-08-30 21:01:42.728 +07:00 [INF] Removing outdated package reference: System.Data.DataSetExtensions, Version=4.5.0
+2021-08-30 21:01:44.373 +07:00 [INF] Upgrade step Update NuGet Packages applied successfully
+2021-08-30 21:02:24.475 +07:00 [INF] Initializing upgrade step Add template files
+2021-08-30 21:02:24.483 +07:00 [INF] 0 expected template items needed
+2021-08-30 21:02:24.485 +07:00 [INF] Initializing upgrade step Upgrade app config files
+2021-08-30 21:02:24.515 +07:00 [INF] Found 0 app settings for upgrade: 
+2021-08-30 21:02:24.518 +07:00 [INF] Found 0 connection strings for upgrade: 
+2021-08-30 21:02:24.526 +07:00 [INF] Initializing upgrade step Update source code
+2021-08-30 21:02:24.531 +07:00 [INF] Running analyzers on PasswordStore
+2021-08-30 21:02:26.090 +07:00 [INF] Identified 0 diagnostics in project PasswordStore
+2021-08-30 21:02:26.105 +07:00 [INF] Initializing upgrade step Move to next project
+2021-08-30 21:02:30.015 +07:00 [INF] Applying upgrade step Move to next project
+2021-08-30 21:02:30.016 +07:00 [INF] Upgrade step Move to next project applied successfully
+2021-08-30 21:02:32.340 +07:00 [INF] Recommending Windows TFM net5.0-windows because the project either has Windows-specific dependencies or builds to a WinExe
+2021-08-30 21:02:32.343 +07:00 [INF] Recommending Windows TFM net5.0-windows because the project either has Windows-specific dependencies or builds to a WinExe
+2021-08-30 21:02:32.349 +07:00 [INF] Recommending Windows TFM net5.0-windows because the project either has Windows-specific dependencies or builds to a WinExe
+2021-08-30 21:02:32.350 +07:00 [INF] Initializing upgrade step Finalize upgrade
+2021-08-30 21:02:32.353 +07:00 [INF] Recommending Windows TFM net5.0-windows because the project either has Windows-specific dependencies or builds to a WinExe
+2021-08-30 21:02:35.499 +07:00 [INF] Applying upgrade step Finalize upgrade
+2021-08-30 21:02:35.500 +07:00 [INF] Upgrade step Finalize upgrade applied successfully
+2021-08-30 21:02:40.541 +07:00 [INF] Upgrade has completed. Please review any changes.

@@ -22,9 +22,12 @@ namespace PasswordStore.Windows
             TelegramApiManager manager = TelegramApiManager.getInstance();
             manager.AuthorizationStateWaitCode += () =>
             {
-                CodeEnter.Visibility = Visibility.Visible;
-                PhoneNumber.IsEnabled = false;
-                codeSended = true;
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    CodeEnter.Visibility = Visibility.Visible;
+                    PhoneNumber.IsEnabled = false;
+                    codeSended = true;
+                });
             };
             //this.DialogResult = false;
         }
