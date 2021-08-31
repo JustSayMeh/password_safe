@@ -23,7 +23,7 @@ namespace PasswordStore.Managers
         public event Action AuthorizationStateWaitCode;
         public event Action AuthorizationStateReady;
         public event Action AuthorizationStateLoggingOut;
-        public static TelegramApiManager getInstance()
+        public static TelegramApiManager GetInstance()
         {
             return instance.Value;
         }
@@ -128,7 +128,16 @@ namespace PasswordStore.Managers
             return parameters;
         }
 
+        public async void LogoutAsync()
+        {
+            await client.LogOutAsync();
+        }
 
+        public async Task<string> GetUserNameAsync()
+        {
+            var user = await client.GetMeAsync();
+            return user.Username;
+        }
         private async Task<IList<Message>> GetFileVaultMessages()
         {
             var user = await client.GetMeAsync();

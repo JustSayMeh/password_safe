@@ -17,5 +17,5 @@
     <BitmapImage x:Key="telegram_icon" UriSource="\images\telegram.png"/>
     <BitmapImage x:Key="telegram_upload_icon" UriSource="\images\telegram-upload.png"/>
     <BitmapImage x:Key="telegram_download_icon" UriSource="\images\telegram-download.png"/>
-  
-</ResourceDictionary>
+    <BitmapImage x:Key="telegram_logout_icon" UriSource="\images\telegram_logout.png"/>
+</ResourceDictionary> 

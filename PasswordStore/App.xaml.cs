@@ -16,7 +16,7 @@ namespace PasswordStore
     {
         async void App_Startup(object sender, StartupEventArgs e)
         {
-            await TelegramApiManager.getInstance().InitAsync();
+            await TelegramApiManager.GetInstance().InitAsync();
             StartWindow window = new StartWindow();
             window.Show();
         }

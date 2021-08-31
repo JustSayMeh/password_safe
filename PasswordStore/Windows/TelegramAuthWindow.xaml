@@ -3,17 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PasswordStore.Windows"
+        xmlns:local="clr-namespace:PasswordStore.Windows" xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="TelegramAuthWindow" 
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
-        Background="{StaticResource window_backgroud_color}">
+        Background="{StaticResource window_backgroud_color}"
+        >
     <StackPanel Margin="10">
         <TextBlock HorizontalAlignment="Center" Text="{StaticResource enter_password_string}"/>
         <PasswordBox Name="Password" MinWidth="250" Margin="10,5,10,0" Padding="5"></PasswordBox>
-    
+
         <TextBlock HorizontalAlignment="Center" Text="{StaticResource enter_phone_number_string}"/>
-        <TextBox Name="PhoneNumber" MinWidth="250" Margin="10,5,10,0" Padding="5"></TextBox>
+        <wpfx:MaskedTextBox Name="PhoneNumber" MinWidth="250" Margin="10,5,10,0" Padding="5" Mask="+0(000) 000-0000"/>
         <WrapPanel HorizontalAlignment="Center">
             <Button MinWidth="60" Margin="0,5,10,5" Padding="5" Content="{StaticResource send_code_string}" Click="Enter_Phone_Click"/>
         </WrapPanel>

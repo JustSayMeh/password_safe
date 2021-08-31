@@ -30,9 +30,16 @@
                             <Image Source="{StaticResource exit_icon}"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    <Separator/>
                     <MenuItem Name="TelegramAuthIcon" Header="{StaticResource telegram_string}" Click="Button_Telegram_Click">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource telegram_icon}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="TelegramLogoutIcon" Header="{StaticResource logout_string}" Click="TelegramLogoutIcon_Click" 
+                              Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource telegram_logout_icon}"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -79,17 +86,25 @@
                     <Image Source="{StaticResource door_icon}" />
                 </Button>
                 <Separator Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}"/>
+                <TextBlock x:Name="TelegramLogin" Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}"/>
                 <Button Click="Button_Telegram_Upload" Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}">
                         <Button.ToolTip>
-                            <ToolTip Content="{StaticResource add_string}"/>
+                            <ToolTip Content="Отправить"/>
                         </Button.ToolTip>
                         <Image Source="{StaticResource telegram_upload_icon}" />
                     </Button>
                 <Button Click="Button_Telegram_Download" Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}">
                     <Button.ToolTip>
-                        <ToolTip Content="{StaticResource add_string}"/>
+                        <ToolTip Content="Загрузить"/>
                     </Button.ToolTip>
                     <Image Source="{StaticResource telegram_download_icon}" />
+                </Button>
+                <Button  Name="TelegramLogoutButton"  Click="TelegramLogoutIcon_Click" 
+                              Visibility="{Binding Path=TelegramWidgetsVisible, Converter={StaticResource BoolToVisConverter}}">
+                    <Button.ToolTip>
+                        <ToolTip Content="{StaticResource logout_string}"/>
+                    </Button.ToolTip>
+                    <Image Source="{StaticResource telegram_logout_icon}"/>
                 </Button>
                 <Separator/>
                 <TextBox GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" Foreground="Gray" FontSize="10" Name="SearchBox" 

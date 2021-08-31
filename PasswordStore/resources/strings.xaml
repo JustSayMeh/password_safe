@@ -66,4 +66,6 @@
     <system:String x:Key="enter_code_string">Введите полученный код</system:String>
     <system:String x:Key="auth_string">Авторизоваться</system:String>
     <system:String x:Key="change_number_string">Изменить номер</system:String>
+
+    <system:String x:Key="logout_string">Разлогиниться</system:String>
 </ResourceDictionary>

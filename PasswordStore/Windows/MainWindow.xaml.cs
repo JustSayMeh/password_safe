@@ -58,10 +58,10 @@ namespace PasswordStore
             this.store_path = store_path;
             this.SizeChanged += MainWindow_SizeChanged;
             this.DataContext = dataContext;
-            if (TelegramApiManager.getInstance().IsUserAuthorized())
+
+            if (TelegramApiManager.GetInstance().IsUserAuthorized())
             {
-                dataContext.TelegramWidgetsVisible = true;
-                TelegramAuthIcon.Visibility = Visibility.Collapsed;
+                telegramAuthState();
             }
         }
 
@@ -219,19 +219,18 @@ namespace PasswordStore
             about.Show();
         }
 
-        private void Button_Telegram_Click(object sender, RoutedEventArgs e)
+        private async void Button_Telegram_Click(object sender, RoutedEventArgs e)
         {
             TelegramAuthWindow telegram_window = new TelegramAuthWindow(MasterPassword);
             if (telegram_window.ShowDialog() == true)
             {
-                TelegramAuthIcon.Visibility = Visibility.Collapsed;
-                dataContext.TelegramWidgetsVisible = true;
+                telegramAuthState();
             }
         }
 
         private void Button_Telegram_Upload(object sender, RoutedEventArgs e)
         {
-            TelegramApiManager.getInstance().SendFileToMyselfAsync(store_path);
+            TelegramApiManager.GetInstance().SendFileToMyselfAsync(store_path);
             ClearTimer timer = new ClearTimer(3000, statusBar, "Отправлено");
         }
 
@@ -239,7 +238,7 @@ namespace PasswordStore
         {
             if (MessageBox.Show("Обновить файл ?", "Обновить файл ?", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
                 return;
-            var manager = TelegramApiManager.getInstance();
+            var manager = TelegramApiManager.GetInstance();
             byte[] bytes = await manager.LoadFileAsync(store_path);
             MemoryStream stream = new MemoryStream(bytes);
             var cryptoFile = CryptoProtocol.Read(stream);
@@ -252,6 +251,21 @@ namespace PasswordStore
             storeData();
             ClearTimer timer = new ClearTimer(3000, statusBar, "Обновлено");
             return;
+        }
+
+        private void TelegramLogoutIcon_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Разлогиниться ?", "Разлогиниться ?", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
+                return;
+            TelegramApiManager.GetInstance().LogoutAsync();
+        }
+
+        private async void telegramAuthState()
+        {
+            TelegramAuthIcon.Visibility = Visibility.Collapsed;
+            dataContext.TelegramWidgetsVisible = true;
+            string name = await TelegramApiManager.GetInstance().GetUserNameAsync();
+            TelegramLogin.Text = $"{name} : ";
         }
     }
 }
